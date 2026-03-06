@@ -882,4 +882,1709 @@ h4.label {
 .cover-tag   { animation: coverTag   .8s cubic-bezier(.16,1,.3,1) .1s  both; }
 .cover h1    { animation: coverTitle .9s cubic-bezier(.16,1,.3,1) .28s both; }
 .cover-sub   { animation: coverSub   .8s cubic-bezier(.16,1,.3,1) .52s both; }
-.cover-c
+.cover-chips { animation: coverChips .8s cubic-bezier(.16,1,.3,1) .72s both; }
+
+/* Scroll-reveal base */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: opacity, transform;
+  transition:
+    opacity  1.1s cubic-bezier(.16,1,.3,1),
+    transform 1.1s cubic-bezier(.16,1,.3,1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered grid children */
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(36px);
+  will-change: opacity, transform;
+  transition:
+    opacity  1s cubic-bezier(.16,1,.3,1),
+    transform 1s cubic-bezier(.16,1,.3,1);
+}
+.reveal-group.revealed > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:.06s; }
+.reveal-group.revealed > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:.16s; }
+.reveal-group.revealed > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:.26s; }
+.reveal-group.revealed > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:.36s; }
+.reveal-group.revealed > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:.46s; }
+.reveal-group.revealed > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay:.56s; }
+.reveal-group.revealed > *:nth-child(7) { opacity:1; transform:translateY(0); transition-delay:.66s; }
+
+.bab { animation: none; }
+
+.tag-added {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #fff3cd;
+  border: 1px solid #ffd966;
+  color: #7d5a00;
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ── RESPONSIVE GRIDS ─────────────────────────────────────────── */
+.cards-2 { grid-template-columns: 1fr 1fr; }
+.cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+.mt-16   { margin-top: 16px; }
+
+/* ── HAMBURGER BUTTON ────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 14px; left: 14px;
+  z-index: 300;
+  width: 40px; height: 40px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.hamburger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── SIDEBAR OVERLAY ─────────────────────────────────────────── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 99;
+}
+
+/* ── FLOW-H RESPONSIVE ───────────────────────────────────────── */
+.flow-h { flex-wrap: wrap; gap: 6px; }
+.flow-h .fh-step { flex-wrap: wrap; }
+
+/* ── TABLE SCROLL WRAP ───────────────────────────────────────── */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ── DIAGRAM ALUR WRAP ───────────────────────────────────────── */
+.diagram-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #f7f6f3;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.diagram-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+}
+
+/* ─ 900px: show hamburger, hide sidebar ─────────────────────── */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 0px; }
+  .main { margin-left: 0; }
+  .content { padding: 0 16px 60px; }
+  .cover {
+    min-height: 100dvh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 72px 24px 48px;
+  }
+  .cover-inner {
+    text-align: center;
+  }
+  .cover h1 {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cover-chips {
+    justify-content: center;
+  }
+  .cover-scroll {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    font-size: 12px;
+    color: rgba(255,255,255,.55);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(5px); }
+  }
+  #progress-bar { left: 0; }
+
+  .hamburger { display: flex; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .28s cubic-bezier(.4,0,.2,1);
+    width: 260px;
+    display: flex;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.open { display: block; }
+}
+
+/* ─ 640px: collapse 3-col → 2-col ──────────────────────────── */
+@media (max-width: 640px) {
+  .cards-3 { grid-template-columns: 1fr 1fr; }
+  .sekbid-body { grid-template-columns: 1fr 1fr; }
+  .bab h2 { font-size: 21px; color: white; }
+  .cover h1 { font-size: 28px; }
+  .cover-sub { font-size: 14px; }
+  .closing { padding: 36px 20px; }
+  .sig-box { justify-content: center; }
+  .principle-grid { grid-template-columns: 1fr; }
+  .compare-table { font-size: 12px; }
+  .compare-table th, .compare-table td { padding: 8px 10px; }
+}
+
+/* ─ 480px: fully single column ─────────────────────────────── */
+@media (max-width: 480px) {
+  .cards   { grid-template-columns: 1fr !important; }
+  .cards-2 { grid-template-columns: 1fr; }
+  .cards-3 { grid-template-columns: 1fr; }
+  .sekbid-body { grid-template-columns: 1fr; }
+  .flow-h { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .flow-h .fh-arrow { transform: rotate(90deg); padding: 2px 0 2px 12px; }
+  .fh-box { white-space: normal; width: 100%; text-align: left; }
+  .cover { padding: 72px 20px 56px; }
+  .cover-chips { gap: 6px; }
+  .chip { font-size: 11px; padding: 4px 10px; }
+  .bab-icon { width: 40px; height: 40px; font-size: 20px; }
+  .bab h2 { font-size: 19px; color: white; }
+  .content { padding: 0 12px 60px; }
+  .tl-title { font-size: 13.5px; }
+  .tl-body { font-size: 12.5px; }
+  .prose { font-size: 13.5px; }
+  .list li { font-size: 13.5px; }
+  #back-top { bottom: 16px; right: 16px; }
+}
+
+/* ── STEP FLOW (replaces flow-h) ─────────────────────────────── */
+.step-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 20px;
+  justify-content: center;
+}
+
+.sf-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sf-box {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.sf-box.accent { background: #eaf4ee; border-color: #b2d8c2; color: var(--accent-1); }
+.sf-box.accent-blue { background: #e8f0fc; border-color: #c5dcf8; color: var(--accent-2); }
+.sf-box.accent-yellow { background: #fff9e6; border-color: #ffe08a; color: #7d5a00; }
+.sf-box.accent-orange { background: #fdeee8; border-color: #f1b49a; color: var(--accent-5); }
+
+.sf-arrow {
+  color: #bbb;
+  font-size: 16px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Vertical step-flow (inside card, for alur koordinasi) */
+.step-flow-v {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin: 8px 0;
+}
+
+.sfv-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sfv-box {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  width: auto;
+  white-space: nowrap;
+}
+
+.sfv-arrow {
+  color: #bbb;
+  font-size: 14px;
+  padding: 2px 0;
+  text-align: center;
+}
+
+/* ── EVAL ICON GRID ──────────────────────────────────────────── */
+.eval-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.eval-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eval-card .ec-icon { font-size: 28px; margin-bottom: 8px; }
+.eval-card .ec-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+.eval-card .ec-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .eval-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .eval-grid { grid-template-columns: 1fr; }
+  .step-flow { flex-direction: column; align-items: flex-start; }
+  .sf-box { white-space: normal; width: 100%; }
+  .sf-arrow { transform: rotate(90deg); margin-left: 14px; }
+}
+
+
+/* bab-label and h2 inside dark header override color classes */
+.bab-header .c1,
+.bab-header .c2,
+.bab-header .c3,
+.bab-header .c4,
+.bab-header .c5,
+.bab-header .c6,
+.bab-header .c7 {
+  color: rgba(255,255,255,.75);
+}
+
+/* ── SEKBID LETTER BADGE ─────────────────────────────────────── */
+.sekbid-head {
+  position: relative;
+}
+
+.sekbid-letter-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.12);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+  border: 2px solid rgba(255,255,255,0.55);
+}
+
+.sekbid-head-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+/* ── CENTERED CARD TITLE (emoji + text) ──────────────────────── */
+.card-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.card-title .ct-emoji {
+  font-size: 22px;
+  line-height: 1;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* Override for cards that already have emoji as sibling div */
+.card > [style*="font-size:28px"],
+.card > [style*="font-size:24px"] {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════════════════════════════ -->
+<button class="hamburger" id="hamburger" aria-label="Toggle menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="logo-icon">🕌</div>
+    <h1>Pedoman Kepengurusan IRMA</h1>
+    <p>SMKN 3 Bogor</p>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section">Dokumen</div>
+    <a class="nav-item active" href="#cover">
+      <div class="nav-dot" style="background:#52b788"></div> Halaman Depan
+    </a>
+    <div class="nav-section">Bab</div>
+    <a class="nav-item" href="#bab1">
+      <div class="nav-dot" style="background:var(--accent-1)"></div> I · Pengurus &amp; Sekbid
+    </a>
+    <a class="nav-item" href="#bab2">
+      <div class="nav-dot" style="background:var(--accent-2)"></div> II · Alur Koordinasi
+    </a>
+    <a class="nav-item" href="#bab3">
+      <div class="nav-dot" style="background:var(--accent-3)"></div> III · Kewenangan
+    </a>
+    <a class="nav-item" href="#bab4">
+      <div class="nav-dot" style="background:var(--accent-4)"></div> IV · Batasan Kewenangan
+    </a>
+    <a class="nav-item" href="#bab5">
+      <div class="nav-dot" style="background:var(--accent-5)"></div> V · Kewenangan Anggota
+    </a>
+    <a class="nav-item" href="#bab6">
+      <div class="nav-dot" style="background:var(--accent-6)"></div> VI · Sistem Evaluasi
+    </a>
+    <a class="nav-item" href="#bab7">
+      <div class="nav-dot" style="background:var(--accent-7)"></div> VII · Prosedur Program
+    </a>
+    <a class="nav-item" href="#penutup">
+      <div class="nav-dot" style="background:#888"></div> Penutup
+    </a>
+  </nav>
+</aside>
+
+<!-- ══════════════════════════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════════════════════════ -->
+<main class="main">
+
+  <!-- COVER -->
+  <div class="cover" id="cover">
+    <div class="cover-bg-img"></div>
+    <div class="cover-inner">
+      <div class="cover-tag">📋 Dokumen Resmi Organisasi</div>
+      <h1>Pedoman Kepengurusan<br><em>IRMA SMKN 3 Bogor</em></h1>
+      <p class="cover-sub">Ikatan Remaja Masjid — Struktur, Koordinasi, Kewenangan, Evaluasi &amp; Prosedur Program</p>
+      <div class="cover-chips">
+        <span class="chip">🏛 7 Bab</span>
+        <span class="chip">🧩 3 Pengurus Inti</span>
+        <span class="chip">📂 7 Seksi Bidang</span>
+        <span class="chip">📋 Prosedur Lengkap</span>
+      </div>
+    </div>
+    <div class="cover-scroll">↓ scroll ke bawah</div>
+  </div>
+
+  <div class="content">
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BAB I
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="bab" id="bab1">
+    <div class="bab-header">
+      <div class="bab-icon bg1" style="font-size:26px">🏛</div>
+      <div class="bab-meta">
+        <div class="bab-label c1">BAB I</div>
+        <h2>Pembagian Pengurus Inti dan Sekbid IRMA</h2>
+      </div>
+    </div>
+
+    <!-- 1. Pengurus Inti -->
+    <div class="sub-section"><h3 class="c1">1. Pengurus Inti</h3></div>
+    <p class="prose">Pengurus Inti adalah unsur pimpinan organisasi yang bertanggung jawab atas pengelolaan dan keberlangsungan IRMA secara keseluruhan.</p>
+
+    <div class="cards cards-3">
+      <!-- Ketua -->
+      <div class="card" style="border-top:3px solid var(--accent-1)">
+        <div style="font-size:28px;margin-bottom:6px;text-align:center">👑</div>
+        <div class="card-title">Ketua</div>
+        <ul>
+          <li>Memimpin organisasi IRMA</li>
+          <li>Mengkoordinasikan seluruh kegiatan dan program kerja</li>
+          <li>Mengambil keputusan organisasi</li>
+          <li>Memimpin rapat pengurus</li>
+          <li>Menjalin komunikasi pihak guru, OSIS maupun ekskul lain</li>
+          <li>Menyusun visi dan misi IRMA bersama pengurus inti</li>
+          <li>Memantau perkembangan seluruh sekbid secara berkala</li>
+        </ul>
+      </div>
+      <!-- Wakil Ketua -->
+      <div class="card" style="border-top:3px solid #52b788">
+        <div style="font-size:28px;margin-bottom:6px;text-align:center">🤝</div>
+        <div class="card-title">Wakil Ketua <span class="tag-added">+ Tambahan</span></div>
+        <ul>
+          <li>Membantu Ketua dalam memimpin dan mengkoordinasikan organisasi</li>
+          <li>Menggantikan tugas Ketua apabila Ketua berhalangan hadir</li>
+          <li>Memantau dan mengevaluasi kinerja sekbid bersama Ketua</li>
+          <li>Menjadi penghubung antara Ketua dengan Ketua Sekbid</li>
+          <li>Membantu penyelesaian permasalahan internal organisasi</li>
+        </ul>
+      </div>
+      <!-- Sekretaris + Bendahara 2-col -->
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="border-top:3px solid var(--accent-2);flex:1">
+          <div style="font-size:24px;margin-bottom:4px;text-align:center">📝</div>
+          <div class="card-title">Sekretaris</div>
+          <ul>
+            <li>Mengurus administrasi organisasi</li>
+            <li>Membuat proposal, laporan kegiatan</li>
+            <li>Menyusun notulen rapat</li>
+            <li>Menyimpan dan mengarsipkan seluruh dokumen organisasi</li>
+            <li>Menyebarkan undangan dan informasi rapat</li>
+            <li>Menyusun agenda rapat bersama Ketua</li>
+          </ul>
+        </div>
+        <div class="card" style="border-top:3px solid #e9a825;flex:1">
+          <div style="font-size:24px;margin-bottom:4px;text-align:center">💰</div>
+          <div class="card-title">Bendahara</div>
+          <ul>
+            <li>Mengelola keuangan</li>
+            <li>Mencatat pemasukan dan pengeluaran dana kegiatan</li>
+            <li>Menyiapkan dana kegiatan</li>
+            <li>Menyusun laporan keuangan secara berkala dan transparan</li>
+            <li>Mengajukan kebutuhan anggaran kepada pembina</li>
+            <li>Menyimpan bukti setiap transaksi keuangan organisasi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 2. Sekbid -->
+    <div class="sub-section"><h3 class="c1">2. Seksi Bidang (Sekbid)</h3></div>
+    <p class="prose">Sekbid ini yang menjalankan program kegiatan IRMA. Setiap sekbid dipimpin oleh seorang Ketua Sekbid yang bertanggung jawab kepada Ketua IRMA, serta didukung oleh anggota-anggota pelaksana kegiatan.</p>
+
+    <div class="sekbid-wrap">
+
+      <!-- a. Syiar -->
+      <div class="sekbid-card">
+        <div class="sekbid-head" style="border-left:4px solid #2d6a4f; background:linear-gradient(to right, #eaf4ee 0%, transparent 100%)">
+          <div class="sekbid-letter-badge" style="background:#2d6a4f; border-color:rgba(255,255,255,0.6)">a</div>
+          <div class="sekbid-head-inner">
+            <span class="sekbid-emoji">📖</span>
+            <div class="sekbid-head-text">
+              <h4>Sekbid Syiar dan Dakwah</h4>
+              <p>Kajian Islam · Kultum · BTAQ · Literasi Al-Qur'an</p>
+            </div>
+          </div>
+        </div>
+        <div class="sekbid-body">
+          <div class="sekbid-col">
+            <h5>Gambaran Kegiatan</h5>
+            <ul>
+              <li>Mengadakan kajian Islam, kultum untuk meningkatkan pemahaman agama baik secara langsung maupun online</li>
+              <li>Mengadakan kegiatan BTAQ</li>
+              <li>Diskusi keislaman</li>
+              <li>Literasi Al-Qur'an dan ilmu pengetahuan</li>
+              <li>Mengadakan program mentoring keislaman antar anggota</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Ketua Sekbid</h5>
+            <ul>
+              <li>Merancang program Kajian, kultum, BTAQ, diskusi keislaman, literasi Al-Quran &amp; ilmu pengetahuan</li>
+              <li>Mengatur jadwal kegiatan</li>
+              <li>Mengkoordinasikan anggota</li>
+              <li>Melaporkan perkembangan program kepada Ketua IRMA</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Anggota Sekbid</h5>
+            <ul>
+              <li>Menyiapkan materi</li>
+              <li>Mengatur teknis pelaksanaan (waktu, tempat, perlengkapan)</li>
+              <li>Mengajak siswa untuk mengikuti kegiatan</li>
+              <li>Mendokumentasikan jalannya kegiatan bersama Sekbid Media</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- b. Media -->
+      <div class="sekbid-card">
+        <div class="sekbid-head" style="border-left:4px solid #1d4e89; background:linear-gradient(to right, #e8f0fc 0%, transparent 100%)">
+          <div class="sekbid-letter-badge" style="background:#1d4e89; border-color:rgba(255,255,255,0.6)">b</div>
+          <div class="sekbid-head-inner">
+            <span class="sekbid-emoji">📸</span>
+            <div class="sekbid-head-text">
+              <h4>Sekbid Media dan Kreatif</h4>
+              <p>Poster · Dokumentasi · Media Sosial · Konten Digital</p>
+            </div>
+          </div>
+        </div>
+        <div class="sekbid-body">
+          <div class="sekbid-col">
+            <h5>Gambaran Kegiatan</h5>
+            <ul>
+              <li>Desain poster dakwah</li>
+              <li>Dokumentasi kegiatan</li>
+              <li>Mengelola media sosial IRMA</li>
+              <li>Membuat konten dakwah digital (video pendek, infografis, dll)</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Ketua Sekbid</h5>
+            <ul>
+              <li>Merencanakan dan mengatur publikasi kegiatan</li>
+              <li>Menyimpan arsip dokumentasi kegiatan IRMA</li>
+              <li>Mengkoordinasikan anggota</li>
+              <li>Memastikan identitas visual IRMA terjaga konsisten di setiap publikasi</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Anggota Sekbid</h5>
+            <ul>
+              <li>Membuat poster dakwah</li>
+              <li>Dokumentasi kegiatan</li>
+              <li>Mengelola media sosial</li>
+              <li>Mengelola dan memperbarui konten kanal digital IRMA secara rutin</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- c. Seni -->
+      <div class="sekbid-card">
+        <div class="sekbid-head" style="border-left:4px solid #7b3f00; background:linear-gradient(to right, #f9ede0 0%, transparent 100%)">
+          <div class="sekbid-letter-badge" style="background:#7b3f00; border-color:rgba(255,255,255,0.6)">c</div>
+          <div class="sekbid-head-inner">
+            <span class="sekbid-emoji">🎶</span>
+            <div class="sekbid-head-text">
+              <h4>Sekbid Seni Islami</h4>
+              <p>Marawis · Nasyid · Mading Masjid</p>
+            </div>
+          </div>
+        </div>
+        <div class="sekbid-body">
+          <div class="sekbid-col">
+            <h5>Gambaran Kegiatan</h5>
+            <ul>
+              <li>Kegiatan di bidang seni Islami seperti Marawis, Nasyid</li>
+              <li>Mengisi Mading</li>
+              <li>Mengikuti perlombaan seni Islami di tingkat sekolah maupun luar sekolah</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Ketua Sekbid</h5>
+            <ul>
+              <li>Mengatur dan mengelola kegiatan dalam bidang seni</li>
+              <li>Mengelola mading Masjid</li>
+              <li>Mengkoordinasikan anggota</li>
+              <li>Merencanakan jadwal latihan rutin kelompok seni Islami</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Anggota Sekbid</h5>
+            <ul>
+              <li>Melaksanakan kegiatan seni Islami seperti marawis, nasyid</li>
+              <li>Mengisi dan mendesain mading sekolah</li>
+              <li>Mengikuti latihan rutin dan tampil mewakili IRMA dalam acara sekolah</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- d. Ukhuwah -->
+      <div class="sekbid-card">
+        <div class="sekbid-head" style="border-left:4px solid #5c2d91; background:linear-gradient(to right, #f2ebff 0%, transparent 100%)">
+          <div class="sekbid-letter-badge" style="background:#5c2d91; border-color:rgba(255,255,255,0.6)">d</div>
+          <div class="sekbid-head-inner">
+            <span class="sekbid-emoji">🤲</span>
+            <div class="sekbid-head-text">
+              <h4>Sekbid Ukhuwah dan Sosial Kemanusiaan</h4>
+              <p>Kebersamaan · Bakti Sosial · Santunan Yatim</p>
+            </div>
+          </div>
+        </div>
+        <div class="sekbid-body">
+          <div class="sekbid-col">
+            <h5>Gambaran Kegiatan</h5>
+            <ul>
+              <li>Membangun kebersamaan anggota IRMA</li>
+              <li>Menjenguk anggota yang sakit</li>
+              <li>Mengadakan kegiatan aksi peduli masyarakat, bakti sosial untuk bencana, santunan yatim, dll</li>
+              <li>Mengadakan kegiatan perpisahan atau silaturahmi antar anggota</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Ketua Sekbid</h5>
+            <ul>
+              <li>Mengatur kegiatan sosial dan aksi peduli masyarakat</li>
+              <li>Merancang kegiatan ukhuwah</li>
+              <li>Mengkoordinasikan anggota</li>
+              <li>Mendata kebutuhan anggota terkait dukungan sosial dan kebersamaan</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Anggota Sekbid</h5>
+            <ul>
+              <li>Menyiapkan kegiatan sosial dan aksi peduli masyarakat</li>
+              <li>Menyiapkan kegiatan ukhuwah anggota</li>
+              <li>Aktif menjalin komunikasi dengan seluruh anggota IRMA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- e. DKM -->
+      <div class="sekbid-card">
+        <div class="sekbid-head" style="border-left:4px solid #1a5276; background:linear-gradient(to right, #e2f0f7 0%, transparent 100%)">
+          <div class="sekbid-letter-badge" style="background:#1a5276; border-color:rgba(255,255,255,0.6)">e</div>
+          <div class="sekbid-head-inner">
+            <span class="sekbid-emoji">🕌</span>
+            <div class="sekbid-head-text">
+              <h4>Sekbid DKM</h4>
+              <p>Ibadah Bersama · Infaq · Kebersihan Masjid</p>
+            </div>
+          </div>
+        </div>
+        <div class="sekbid-body">
+          <div class="sekbid-col">
+            <h5>Gambaran Kegiatan</h5>
+            <ul>
+              <li>Kegiatan ibadah bersama (Salat Jumat, Pesantren Kilat, Kegiatan Ramadan)</li>
+              <li>Infaq kegiatan</li>
+              <li>Kebersihan masjid</li>
+              <li>Pengadaan perlengkapan ibadah masjid yang dibutuhkan</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Ketua Sekbid</h5>
+            <ul>
+              <li>Merancang dan mengatur pelaksanaan kegiatan ibadah bersama</li>
+              <li>Mengatur kegiatan infaq masjid dan kebersihan masjid</li>
+              <li>Mengkoordinasikan anggota</li>
+              <li>Berkoordinasi dengan pihak sekolah terkait penggunaan fasilitas masjid</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Anggota Sekbid</h5>
+            <ul>
+              <li>Menyiapkan kegiatan ibadah bersama (Salat Jumat, Pesantren Kilat, Kegiatan Ramadan)</li>
+              <li>Menyiapkan kegiatan infaq</li>
+              <li>Melaksanakan kebersihan masjid</li>
+              <li>Menjaga ketertiban dan kenyamanan lingkungan masjid</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- f. Kaderisasi -->
+      <div class="sekbid-card">
+        <div class="sekbid-head" style="border-left:4px solid #145a32; background:linear-gradient(to right, #e8f5ec 0%, transparent 100%)">
+          <div class="sekbid-letter-badge" style="background:#145a32; border-color:rgba(255,255,255,0.6)">f</div>
+          <div class="sekbid-head-inner">
+            <span class="sekbid-emoji">🌱</span>
+            <div class="sekbid-head-text">
+              <h4>Sekbid Kaderisasi / Keanggotaan</h4>
+              <p>Rekrutmen · Pembinaan · Pelatihan Kepemimpinan</p>
+            </div>
+          </div>
+        </div>
+        <div class="sekbid-body">
+          <div class="sekbid-col">
+            <h5>Gambaran Kegiatan</h5>
+            <ul>
+              <li>Merekrut anggota baru</li>
+              <li>Pembinaan anggota IRMA</li>
+              <li>Pelatihan kepemimpinan dan peningkatan kualitas SDM</li>
+              <li>Menyusun database keanggotaan IRMA</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Ketua Sekbid</h5>
+            <ul>
+              <li>Mengatur perekrutan anggota baru</li>
+              <li>Merancang program pembinaan anggota</li>
+              <li>Merancang program kepemimpinan dan peningkatan kualitas SDM</li>
+              <li>Mengkoordinasikan anggota</li>
+              <li>Memastikan database keanggotaan selalu diperbarui</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Anggota</h5>
+            <ul>
+              <li>Mengajak siswa bergabung</li>
+              <li>Menyiapkan kegiatan pembinaan dan pelatihan anggota</li>
+              <li>Membantu mengelola data dan administrasi keanggotaan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- g. Dana Usaha -->
+      <div class="sekbid-card">
+        <div class="sekbid-head" style="border-left:4px solid #e9a825; background:linear-gradient(to right, #fff9e6 0%, transparent 100%)">
+          <div class="sekbid-letter-badge" style="background:#e9a825; border-color:rgba(255,255,255,0.7); color:#5a3e00">g</div>
+          <div class="sekbid-head-inner">
+            <span class="sekbid-emoji">💼</span>
+            <div class="sekbid-head-text">
+              <h4>Sekbid Dana Usaha</h4>
+              <p>Kewirausahaan · Penggalangan Dana</p>
+            </div>
+          </div>
+        </div>
+        <div class="sekbid-body">
+          <div class="sekbid-col">
+            <h5>Gambaran Kegiatan</h5>
+            <ul>
+              <li>Kewirausahaan untuk pemasukan dana IRMA</li>
+              <li>Penggalangan dana untuk mendukung kegiatan sosial IRMA</li>
+              <li>Menjalin kerja sama dengan pihak luar dalam kegiatan berbasis dana usaha (seizin Ketua dan Pembina)</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Ketua Sekbid</h5>
+            <ul>
+              <li>Merencanakan dan mengelola kegiatan kewirausahaan untuk mendapatkan dana IRMA</li>
+              <li>Mengkoordinasikan anggota</li>
+              <li>Menyampaikan laporan hasil usaha kepada Bendahara secara rutin</li>
+            </ul>
+          </div>
+          <div class="sekbid-col">
+            <h5>Tugas Anggota Sekbid</h5>
+            <ul>
+              <li>Melaksanakan program kewirausahaan</li>
+              <li>Membantu kegiatan penggalangan dana dan melaporkan hasilnya kepada Ketua Sekbid</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /sekbid-wrap -->
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BAB II
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="bab" id="bab2">
+    <div class="bab-header">
+      <div class="bab-icon bg2" style="font-size:26px">🔗</div>
+      <div class="bab-meta">
+        <div class="bab-label c2">BAB II</div>
+        <h2>Alur Koordinasi IRMA SMKN 3 Bogor</h2>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">ℹ️</div>
+      <div class="callout-body">Alur koordinasi bukan hanya saat ada acara saja, tapi terjadi ketika ada hal-hal yang berkaitan dengan pengambilan keputusan, pelaksanaan kegiatan, dan pengelolaan organisasi.</div>
+    </div>
+
+    <!-- 6 sub-section koordinasi -->
+    <div class="sub-section"><h3 class="c2">1. Perencanaan Program Kerja</h3></div>
+    <ul class="list">
+      <li>Koordinasi dilakukan saat menyusun rencana kegiatan organisasi.</li>
+      <li>Saat menentukan program kerja satu periode dari setiap sekbid atau 3 bulanan, menyusul kegiatan, menentukan jadwal, dll</li>
+    </ul>
+    <p class="prose" style="font-style:italic;color:var(--muted)">Tujuan: supaya program tidak tumpang tindih dan sesuai visi organisasi.</p>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box accent">Setiap Sekbid menyusun usulan program</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua Sekbid</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Rapat Pengurus Inti</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina IRMA</div></div>
+    </div>
+
+    <div class="sub-section"><h3 class="c2">2. Pelaksanaan Kegiatan</h3></div>
+    <ul class="list">
+      <li>Koordinasi paling sering terjadi saat menjalankan kegiatan (Kajian, sanlat, pelatihan sofskil, dll)</li>
+    </ul>
+    <div class="cards cards-3">
+      <div class="card" style="grid-column:1/-1">
+        <div class="card-title">Hal yang Dikoordinasikan</div>
+        <ul><li>Konsep kegiatan</li><li>Pembagian tugas</li><li>Waktu dan tempat</li><li>Kebutuhan perlengkapan</li></ul>
+      </div>
+    </div>
+    <h4 class="label">Alur Saran &amp; Masukan</h4>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box">Anggota Sekbid</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua Sekbid</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Rapat Pengurus</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina IRMA</div></div>
+    </div>
+    <hr style="border:none;border-top:1px dashed var(--border);margin:4px 0 16px">
+    <h4 class="label">Alur Kepanitiaan</h4>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box">Anggota Panitia</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua Divisi</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina IRMA</div></div>
+    </div>
+    <p class="prose" style="margin-top:8px">Bisa saling melibatkan beberapa sekbid yang dibutuhkan dari setiap pelaksanaan kegiatan</p>
+    <hr style="border:none;border-top:1px dashed var(--border);margin:4px 0 16px">
+    <h4 class="label">Alur pemberian Jobdesk atau arahan</h4>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box accent-blue">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua Divisi</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Anggota Divisi</div></div>
+    </div>
+
+    <div class="sub-section"><h3 class="c2">3. Administrasi dan Perizinan</h3></div>
+    <p class="prose">Kegiatan organisasi di sekolah harus melalui prosedur.</p>
+    <div class="cards cards-2" style="margin-bottom:8px">
+      <div class="card" style="grid-column:1/-1">
+        <div class="card-title">Hal yang Dikoordinasikan</div>
+        <ul><li>Pembuatan proposal</li><li>Izin kegiatan ke sekolah</li><li>Laporan kegiatan</li></ul>
+      </div>
+    </div>
+    <h4 class="label">Alur Koordinasi</h4>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box">Sekbid</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Sekretaris</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina</div></div>
+    </div>
+
+    <div class="sub-section"><h3 class="c2">4. Pengelolaan Keuangan</h3></div>
+    <p class="prose">Setiap kegiatan membutuhkan koordinasi dengan bendahara, seperti pengajuan dana kegiatan, pengumpulan donasi, laporan keuangan, dll</p>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box accent-yellow">Sekbid Kegiatan</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent-yellow">Bendahara</div></div>
+    </div>
+
+    <div class="sub-section"><h3 class="c2">5. Publikasi dan Informasi</h3></div>
+    <p class="prose">Supaya kegiatan diketahui anggota atau siswa lain.</p>
+    <ul class="list"><li>Desain poster</li><li>Pengumuman kegiatan</li><li>Dokumentasi</li></ul>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box">Sekbid Kegiatan</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent-blue">Sekbid Media &amp; Kreatif</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina IRMA</div></div>
+    </div>
+
+    <div class="sub-section"><h3 class="c2">6. Evaluasi Kegiatan</h3></div>
+    <ul class="list">
+      <li>Setelah kegiatan selesai, organisasi biasanya melakukan evaluasi.</li>
+      <li>Hal yang dibahas: kekurangan dan kelebihan kegiatan, perbaikan untuk kegiatan berikutnya</li>
+      <li>Bisa dilakukan melalui rapat pengurus.</li>
+      <li>Anggota dan ketua sekbid bisa menyampaikan evaluasinya dalam rapat</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <div class="sub-section"><h3 class="c2">Rancangan Alur Koordinasi saat Mengajukan Program atau Kegiatan</h3></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-2)">1</div>
+        <div class="tl-title">Setiap sekbid memunculkan ide kegiatan dan program</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-2)">2</div>
+        <div class="tl-title">Ketua sekbid menyampaikan kepada ketua IRMA</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-2)">3</div>
+        <div class="tl-title">Dibahas dalam rapat pengurus</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-2)">4</div>
+        <div class="tl-title">Ketua IRMA menyampaikan kepada Pembina IRMA</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-2)">5</div>
+        <div class="tl-title">Jika disetujui, dibuat proposal oleh sekretaris</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-2)">6</div>
+        <div class="tl-title">Bendahara menyiapkan anggaran</div>
+      </div>
+      <div class="tl-item" style="margin-bottom:0">
+        <div class="tl-dot" style="background:var(--accent-1)">7</div>
+        <div class="tl-title">Sekbid terkait menjalankan kegiatan</div>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c2">Alur Koordinasi saat Menyampaikan Masukan dan Saran</h3></div>
+    <ul class="list numbered" style="color:var(--accent-2)">
+      <li>Jika anggota ada saran dan masukan, disampaikan kepada ketua sekbid</li>
+      <li>Ketua sekbid menyampaikan kepada ketua IRMA</li>
+      <li>Dibahas dalam rapat pengurus</li>
+      <li>Menyampaikan hasil diskusi kepada Pembina IRMA</li>
+    </ul>
+
+    <div class="callout tip" style="margin-top:20px">
+      <div class="callout-icon">📌</div>
+      <div class="callout-body">
+        <strong>Prinsip Kerja IRMA</strong>
+        Program dibuat bersama dalam rapat kerja · Sekbid menjalankan kegiatan sesuai bidang · Koordinasi tetap melalui ketua · Setiap kegiatan dibuat laporan
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BAB III
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="bab" id="bab3">
+    <div class="bab-header">
+      <div class="bab-icon bg3" style="font-size:26px">⚖️</div>
+      <div class="bab-meta">
+        <div class="bab-label c3">BAB III</div>
+        <h2>Kewenangan dalam Struktur</h2>
+      </div>
+    </div>
+
+    <div class="cards cards-2">
+      <div class="card" style="border-top:3px solid var(--accent-3)">
+        <div style="font-size:30px;margin-bottom:4px;text-align:center">👑</div>
+        <div class="card-title c3">Kewenangan Ketua IRMA</div>
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Kewenangan tertinggi di bawah Pembina. Ruang lingkup: seluruh organisasi.</p>
+        <ul>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Menentukan arah organisasi</strong><br><span style="color:var(--muted);font-weight:400">Menetapkan visi kegiatan IRMA, mengarahkan program kerja</span></li>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Mengambil keputusan organisasi</strong><br><span style="color:var(--muted);font-weight:400">Menyetujui/menolak usulan, menentukan prioritas</span></li>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Mengkoordinasikan seluruh sekbid</strong><br><span style="color:var(--muted);font-weight:400">Memastikan setiap sekbid bekerja sesuai tugasnya</span></li>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Menjadi penanggung jawab kegiatan</strong><br><span style="color:var(--muted);font-weight:400">Setiap kegiatan IRMA secara umum berada di bawah tanggung jawab ketua</span></li>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Memimpin rapat pengurus</strong><br><span style="color:var(--muted);font-weight:400">Mengarahkan diskusi dan pengambilan keputusan</span></li>
+          <li style="font-size:13px"><strong>Mewakili organisasi</strong><br><span style="color:var(--muted);font-weight:400">Berkomunikasi dengan pembina, sekolah, atau organisasi lain</span></li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid #c0762a">
+        <div style="font-size:30px;margin-bottom:4px;text-align:center">🗂</div>
+        <div class="card-title" style="color:#c0762a">Kewenangan Ketua Sekbid</div>
+        <p style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Kewenangan dalam lingkup bidangnya saja.</p>
+        <ul>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Mengatur kegiatan di bidangnya</strong><br><span style="color:var(--muted);font-weight:400">Merancang program kegiatan sekbid</span></li>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Mengkoordinasikan anggota sekbid</strong><br><span style="color:var(--muted);font-weight:400">Membagi tugas kepada anggota</span></li>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Mengusulkan kegiatan kepada ketua</strong><br><span style="color:var(--muted);font-weight:400">Menyampaikan ide program atau kegiatan</span></li>
+          <li style="font-size:13px;margin-bottom:6px"><strong>Mengawasi pelaksanaan kegiatan</strong><br><span style="color:var(--muted);font-weight:400">Memastikan anggota menjalankan tugasnya</span></li>
+          <li style="font-size:13px"><strong>Melaporkan perkembangan kegiatan</strong><br><span style="color:var(--muted);font-weight:400">Memberikan laporan kepada ketua atau wakil ketua</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c3">Perbedaan Kewenangan</h3></div>
+    <div class="table-wrap"><table class="compare-table">
+      <thead><tr>
+        <th style="background:var(--accent-3)">Ketua IRMA</th>
+        <th style="background:#c0762a">Ketua Sekbid</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Memimpin seluruh organisasi</td><td>Memimpin satu bidang</td></tr>
+        <tr><td>Mengambil keputusan organisasi</td><td>Mengusulkan kegiatan</td></tr>
+        <tr><td>Mengkoordinasikan semua sekbid</td><td>Mengkoordinasikan anggota sekbid</td></tr>
+        <tr><td>Penanggung jawab utama kegiatan</td><td>Penanggung jawab teknis bidang</td></tr>
+        <tr><td>Berhubungan dengan pembina</td><td>Berkoordinasi dengan ketua</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sub-section"><h3 class="c3">Contoh: Kegiatan Berbagi Takjil</h3></div>
+    <p class="prose">Sekbid Sosial ingin mengadakan kegiatan.</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot" style="background:var(--accent-3)">a</div><div class="tl-title">Ketua Sekbid Sosial merancang konsep kegiatan</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--accent-3)">b</div><div class="tl-title">Ketua Sekbid mengusulkan kepada Ketua IRMA</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--accent-3)">c</div><div class="tl-title">Ketua IRMA membahas dalam rapat pengurus</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--accent-3)">d</div><div class="tl-title">Ketua IRMA menyampaikan kepada Pembina IRMA</div></div>
+      <div class="tl-item" style="margin-bottom:0"><div class="tl-dot" style="background:var(--accent-1)">e</div><div class="tl-title">Jika disetujui → kegiatan dilaksanakan</div></div>
+    </div>
+    <div class="callout tip" style="margin-top:16px">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <strong>Dalam kegiatan tersebut:</strong>
+        Ketua IRMA → penanggung jawab organisasi &nbsp;|&nbsp; Ketua Sekbid Sosial → penanggung jawab teknis kegiatan
+      </div>
+    </div>
+    <div class="callout principle" style="margin-top:12px">
+      <div class="callout-icon">📌</div>
+      <div class="callout-body">
+        <strong>PRINSIP PENTING DALAM ORGANISASI</strong>
+        Ketua tidak mengerjakan semuanya sendiri &nbsp;·&nbsp; Ketua Sekbid tidak berjalan sendiri tanpa koordinasi<br>
+        <br><strong>ORGANISASI BERJALAN BAIK JIKA:</strong> Ketua mengarahkan &nbsp;·&nbsp; Sekbid menjalankan program
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BAB IV
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="bab" id="bab4">
+    <div class="bab-header">
+      <div class="bab-icon bg4" style="font-size:26px">🚧</div>
+      <div class="bab-meta">
+        <div class="bab-label c4">BAB IV</div>
+        <h2>Batasan Kewenangan Ketua IRMA dan Ketua Sekbid</h2>
+      </div>
+    </div>
+
+    <div class="cards cards-2">
+      <div class="card" style="border-top:3px solid var(--accent-4)">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">🚫</div>
+        <div class="card-title">Batasan Ketua IRMA</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px;text-align:center">Walaupun ketua adalah pemimpin organisasi, kewenangannya tetap tidak mutlak.</p>
+        <ul>
+          <li style="font-size:13px;margin-bottom:8px"><strong>Tidak boleh mengambil keputusan besar sendiri</strong><br><span style="color:var(--muted)">Program besar harus dibahas dalam rapat pengurus, harus ada musyawarah</span></li>
+          <li style="font-size:13px;margin-bottom:8px"><strong>Tidak boleh melewati pembina</strong><br><span style="color:var(--muted)">Kegiatan yang dilaksanakan oleh IRMA harus seizin pembina</span></li>
+          <li style="font-size:13px;margin-bottom:8px"><strong>Tidak boleh mengambil alih tugas sekbid</strong><br><span style="color:var(--muted)">Ketua hanya mengkoordinasikan, bukan mengerjakan semua pekerjaan sekbid</span></li>
+          <li style="font-size:13px"><strong>Tidak boleh memutuskan keuangan sendiri</strong><br><span style="color:var(--muted)">Pengeluaran dana harus melalui bendahara dan kesepakatan pengurus</span></li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid #9b59b6">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">🚫</div>
+        <div class="card-title" style="color:#7d3ca3">Batasan Ketua Sekbid</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:10px;text-align:center">Ketua sekbid juga memiliki batasan supaya organisasi tetap terarah.</p>
+        <ul>
+          <li style="font-size:13px;margin-bottom:8px"><strong>Tidak boleh membuat kegiatan sendiri tanpa koordinasi</strong><br><span style="color:var(--muted)">Semua kegiatan harus disampaikan kepada ketua IRMA</span></li>
+          <li style="font-size:13px;margin-bottom:8px"><strong>Tidak boleh mengatasnamakan organisasi tanpa izin</strong><br><span style="color:var(--muted)">Tidak bisa mewakili IRMA dalam keputusan besar, kerja sama, atau kegiatan sekolah</span></li>
+          <li style="font-size:13px;margin-bottom:8px"><strong>Tidak boleh keluar dari bidangnya</strong><br><span style="color:var(--muted)">Ketua sekbid hanya mengatur kegiatan di bidangnya</span></li>
+          <li style="font-size:13px"><strong>Tidak boleh menggunakan dana organisasi sendiri</strong><br><span style="color:var(--muted)">Semua penggunaan dana harus melalui bendahara dan persetujuan ketua</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c4">Prinsip Batasan Kewenangan Organisasi</h3></div>
+    <p class="prose">Supaya organisasi berjalan sehat:</p>
+    <div class="principle-block">
+      <div class="p-title">3 Prinsip Utama</div>
+      <div class="principle-grid">
+        <div class="p-item"><div class="p-num">1</div><div><strong>Musyawarah</strong><br>Keputusan penting diambil melalui rapat.</div></div>
+        <div class="p-item"><div class="p-num">2</div><div><strong>Koordinasi</strong><br>Setiap bidang tetap berkomunikasi dengan ketua.</div></div>
+        <div class="p-item" style="grid-column:1/-1"><div class="p-num">3</div><div><strong>Tanggung jawab sesuai bidang</strong><br>Setiap orang fokus pada tugasnya.</div></div>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c4">Gambaran Singkat</h3></div>
+    <div class="table-wrap"><table class="compare-table">
+      <thead><tr>
+        <th style="background:var(--accent-4)">Ketua</th>
+        <th style="background:#9b59b6">Ketua Sekbid</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Mengarahkan organisasi</td><td>Mengatur program bidangnya</td></tr>
+        <tr><td>Mengambil keputusan bersama pengurus</td><td>Mengkoordinasikan anggota</td></tr>
+        <tr><td>Mengkoordinasikan sekbid</td><td>—</td></tr>
+        <tr><td><em>Batasan: Tidak boleh otoriter</em></td><td><em>Batasan: Tidak membuat keputusan organisasi</em></td></tr>
+        <tr><td><em>Batasan: Tidak boleh melangkahi pembina</em></td><td><em>Batasan: Tidak menjalankan kegiatan tanpa persetujuan</em></td></tr>
+        <tr><td><em>Batasan: Tidak mengerjakan teknis sekbid</em></td><td><em>Batasan: Tidak keluar dari bidangnya</em></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BAB V
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="bab" id="bab5">
+    <div class="bab-header">
+      <div class="bab-icon bg5" style="font-size:26px">👥</div>
+      <div class="bab-meta">
+        <div class="bab-label c5">BAB V</div>
+        <h2>Kewenangan Anggota Sekbid</h2>
+      </div>
+    </div>
+
+    <p class="prose">Sifatnya lebih operasional (pelaksana kegiatan). Karena itu, penting juga ada batasan kewenangan anggota agar organisasi berjalan tertib dan tidak terjadi kebingungan dalam mengambil keputusan.</p>
+
+    <div class="cards cards-2">
+      <div class="card" style="border-top:3px solid var(--accent-5)">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">✅</div>
+        <div class="card-title" style="color:var(--accent-5)">Anggota Boleh</div>
+        <ul>
+          <li style="font-size:13px;margin-bottom:4px">Melaksanakan kegiatan</li>
+          <li style="font-size:13px;margin-bottom:4px">Memberi ide</li>
+          <li style="font-size:13px;margin-bottom:4px">Mengatur teknis tugas yang diberikan</li>
+          <li style="font-size:13px;margin-bottom:4px">Menyiapkan perlengkapan kegiatan</li>
+          <li style="font-size:13px;margin-bottom:4px">Menjadi panitia acara</li>
+          <li style="font-size:13px">Membantu pelaksanaan program kerja</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid #c0392b">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">❌</div>
+        <div class="card-title" style="color:#c0392b">Anggota Tidak Boleh</div>
+        <ul>
+          <li style="font-size:13px;margin-bottom:4px">Mengambil keputusan organisasi</li>
+          <li style="font-size:13px;margin-bottom:4px">Mengatasnamakan organisasi</li>
+          <li style="font-size:13px;margin-bottom:4px">Membuat kegiatan sendiri tanpa koordinasi</li>
+          <li style="font-size:13px;margin-bottom:4px">Menghubungi pihak luar atas nama IRMA</li>
+          <li style="font-size:13px;margin-bottom:4px">Membuat kerja sama kegiatan tanpa izin</li>
+          <li style="font-size:13px">Membuat grup di dalam grup tanpa sepengetahuan Ketua IRMA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c5">Batasan Kewenangan Anggota Sekbid</h3></div>
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <strong>Keputusan organisasi diambil oleh ketua dan pengurus inti melalui rapat.</strong>
+        Anggota tidak boleh menentukan kegiatan baru, mengubah program kerja, atau membuat grup organisasi sendiri diluar sepengetahuan Ketua IRMA dan tidak memasukan ketua IRMA
+      </div>
+    </div>
+    <ul class="list">
+      <li>Tidak mengatasnamakan organisasi — menghubungi pihak luar atas nama IRMA, membuat kerja sama kegiatan</li>
+      <li>Tidak membuat kegiatan sendiri — Jika ada ide kegiatan, harus disampaikan kepada ketua sekbid terlebih dahulu</li>
+      <li>Tidak menggunakan fasilitas atau dana organisasi tanpa izin — Segala penggunaan dana atau perlengkapan harus melalui pengurus</li>
+    </ul>
+
+    <div class="sub-section"><h3 class="c5">Alur Kewenangan yang Ideal</h3></div>
+    <div class="step-flow" style="margin-bottom:24px">
+      <div class="sf-step"><div class="sf-box accent-orange">Anggota</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua Sekbid</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina</div></div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-icon">🌟</div>
+      <div class="callout-body">
+        <strong>Prinsip Peran Anggota dalam Organisasi</strong>
+        Anggota adalah pelaksana kegiatan &nbsp;·&nbsp; Anggota adalah sumber ide organisasi &nbsp;·&nbsp; Anggota adalah calon pemimpin organisasi berikutnya
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BAB VI
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="bab" id="bab6">
+    <div class="bab-header">
+      <div class="bab-icon bg6" style="font-size:26px">📊</div>
+      <div class="bab-meta">
+        <div class="bab-label c6">BAB VI</div>
+        <h2>Sistem Evaluasi Ekskul IRMA SMKN 3 Bogor</h2>
+      </div>
+    </div>
+
+    <p class="prose">Sistem evaluasi adalah cara organisasi untuk menilai apakah kegiatan dan kinerja pengurus sudah berjalan baik atau belum, serta mencari perbaikan untuk kegiatan berikutnya.</p>
+    <p class="prose">Evaluasi penting supaya organisasi tidak hanya menjalankan kegiatan, tetapi juga belajar dari pengalaman.</p>
+
+    <div class="sub-section"><h3 class="c6">1. Tujuan Evaluasi Organisasi</h3></div>
+    <div class="eval-grid">
+      <div class="eval-card">
+        <div class="ec-icon">🎯</div>
+        <div class="ec-title">Kesesuaian Rencana</div>
+        <div class="ec-desc">Mengetahui apakah kegiatan berjalan sesuai rencana</div>
+      </div>
+      <div class="eval-card">
+        <div class="ec-icon">🔍</div>
+        <div class="ec-title">Identifikasi Kendala</div>
+        <div class="ec-desc">Mengetahui kendala atau masalah yang terjadi</div>
+      </div>
+      <div class="eval-card">
+        <div class="ec-icon">🛠</div>
+        <div class="ec-title">Perbaikan</div>
+        <div class="ec-desc">Menemukan perbaikan untuk kegiatan selanjutnya</div>
+      </div>
+      <div class="eval-card">
+        <div class="ec-icon">📋</div>
+        <div class="ec-title">Kinerja Pengurus</div>
+        <div class="ec-desc">Menilai kinerja pengurus dan sekbid</div>
+      </div>
+      <div class="eval-card">
+        <div class="ec-icon">📝</div>
+        <div class="ec-title">Bahan Perencanaan</div>
+        <div class="ec-desc">Menjadi bahan penyusunan program kerja periode berikutnya</div>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c6">2. Waktu Evaluasi Dilakukan</h3></div>
+    <div class="cards cards-3">
+      <div class="card" style="border-top:3px solid var(--accent-6)">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">⚡</div>
+        <div class="card-title">Evaluasi Setelah Kegiatan</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px">Setelah sebuah kegiatan selesai (Sanlat, PHBI, Kajian, dll)</p>
+        <ul><li style="font-size:12px">Pelaksanaan acara</li><li style="font-size:12px">Kehadiran peserta</li><li style="font-size:12px">Pembagian tugas</li><li style="font-size:12px">Sistem koordinasi anggota</li><li style="font-size:12px">Kendala yang terjadi</li></ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-6)">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">🔄</div>
+        <div class="card-title">Evaluasi Rutin Pengurus</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px">Rapat mingguan atau bulanan</p>
+        <ul><li style="font-size:12px">Perkembangan program kerja</li><li style="font-size:12px">Kendala di setiap sekbid</li><li style="font-size:12px">Koordinasi antar pengurus</li><li style="font-size:12px">Pencapaian target program kerja dalam periode berjalan</li></ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--accent-6)">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">🏁</div>
+        <div class="card-title">Evaluasi Akhir Kepengurusan</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px">Di akhir periode kepengurusan</p>
+        <ul>
+          <li style="font-size:12px">Program kegiatan: Apakah sesuai rencana &amp; tujuan tercapai</li>
+          <li style="font-size:12px">Kinerja panitia: Tugas berjalan baik, koordinasi lancar</li>
+          <li style="font-size:12px">Partisipasi anggota: Aktif, pembagian tugas jelas</li>
+          <li style="font-size:12px">Kendala: Waktu, perlengkapan, komunikasi</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c6">3. Cara Melakukan Evaluasi</h3></div>
+    <p class="prose">Biasanya dilakukan melalui rapat evaluasi pengurus.</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot" style="background:var(--accent-6)">1</div><div class="tl-title">Ketua kegiatan menjelaskan jalannya acara</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--accent-6)">2</div><div class="tl-title">Setiap sekbid menyampaikan laporan</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--accent-6)">3</div><div class="tl-title">Pengurus lain memberikan masukan</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:var(--accent-6)">4</div><div class="tl-title">Dicatat oleh sekretaris sebagai bahan perbaikan</div></div>
+      <div class="tl-item" style="margin-bottom:0"><div class="tl-dot" style="background:var(--accent-1)">5</div><div class="tl-title">Hasil evaluasi disampaikan kepada Pembina IRMA</div></div>
+    </div>
+
+    <div class="sub-section"><h3 class="c6">4. Prinsip Evaluasi yang Baik</h3></div>
+    <div class="callout tip">
+      <div class="callout-icon">✨</div>
+      <div class="callout-body">
+        Supaya evaluasi tidak menimbulkan konflik:<br>
+        Fokus pada kegiatan, bukan menyalahkan orang &nbsp;·&nbsp; Memberi masukan dengan cara yang baik &nbsp;·&nbsp; Mencari solusi bersama &nbsp;·&nbsp; Semua pengurus boleh menyampaikan pendapat
+      </div>
+    </div>
+    <div class="cards cards-2">
+      <div class="card" style="background:#f7f6f3">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">❓</div>
+        <div class="card-title">Pertanyaan Evaluasi Pasca Kegiatan</div>
+        <ul>
+          <li style="font-size:13px">Apa yang sudah berjalan baik?</li>
+          <li style="font-size:13px">Apa yang kurang dari kegiatan ini?</li>
+          <li style="font-size:13px">Kendala apa yang terjadi?</li>
+          <li style="font-size:13px">Apa yang harus diperbaiki ke depan?</li>
+        </ul>
+      </div>
+      <div class="card" style="background:#f7f6f3">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">📋</div>
+        <div class="card-title">Format Laporan Evaluasi Kegiatan <span class="tag-added">+ Tambahan</span></div>
+        <ul>
+          <li style="font-size:12.5px">Nama kegiatan dan tanggal pelaksanaan</li>
+          <li style="font-size:12.5px">Tujuan kegiatan</li>
+          <li style="font-size:12.5px">Ringkasan pelaksanaan (waktu, tempat, peserta, rundown)</li>
+          <li style="font-size:12.5px">Pencapaian dan keberhasilan kegiatan</li>
+          <li style="font-size:12.5px">Kendala dan hambatan yang ditemui</li>
+          <li style="font-size:12.5px">Rekomendasi perbaikan</li>
+          <li style="font-size:12.5px">Laporan keuangan kegiatan</li>
+          <li style="font-size:12.5px">Dokumentasi foto kegiatan</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       BAB VII (BARU)
+  ═══════════════════════════════════════════════════════════ -->
+  <section class="bab" id="bab7">
+    <div class="bab-header">
+      <div class="bab-icon bg7" style="font-size:26px">⚙️</div>
+      <div class="bab-meta">
+        <div class="bab-label c7">BAB VII — BAB BARU</div>
+        <h2>Sistem dan Prosedur Pembuatan Program Ekskul IRMA SMKN 3 Bogor</h2>
+      </div>
+    </div>
+
+    <p class="prose">Bab ini mengatur secara rinci bagaimana sebuah program atau kegiatan dirancang, diusulkan, disetujui, dilaksanakan, dan dilaporkan. Sistem ini bertujuan agar setiap program berjalan terstruktur, transparan, dan dapat dipertanggungjawabkan.</p>
+
+    <div class="sub-section"><h3 class="c7">1. Pengertian Program Kerja</h3></div>
+    <p class="prose">Program kerja adalah rencana kegiatan yang disusun secara sistematis oleh masing-masing sekbid atau pengurus inti IRMA dalam satu periode kepengurusan, yang memuat tujuan, sasaran, mekanisme pelaksanaan, anggaran, dan indikator keberhasilan.</p>
+    <div class="cards cards-2">
+      <div class="card" style="border-left:4px solid var(--accent-7)">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">🔁</div>
+        <div class="card-title">Program Kerja Rutin</div>
+        <p style="font-size:13px;color:var(--muted)">Dilaksanakan secara berkala (mingguan, bulanan, atau setiap momen tertentu).</p>
+        <p style="font-size:12.5px;margin-top:6px"><em>Contoh: kajian rutin, pembersihan masjid, rapat pengurus.</em></p>
+      </div>
+      <div class="card" style="border-left:4px solid #27ae60">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">📅</div>
+        <div class="card-title">Program Kerja Non-Rutin</div>
+        <p style="font-size:13px;color:var(--muted)">Dilaksanakan pada waktu tertentu dan membutuhkan perencanaan khusus.</p>
+        <p style="font-size:12.5px;margin-top:6px"><em>Contoh: Pesantren Kilat, PHBI, bakti sosial, penerimaan anggota baru.</em></p>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c7">2. Dasar Penyusunan Program Kerja</h3></div>
+    <p class="prose">Program kerja IRMA disusun berdasarkan:</p>
+    <ul class="list numbered" style="color:var(--accent-7)">
+      <li>Visi dan misi IRMA periode berjalan</li>
+      <li>Hasil evaluasi kepengurusan sebelumnya</li>
+      <li>Kebutuhan dan aspirasi anggota IRMA</li>
+      <li>Kalender akademik sekolah SMKN 3 Bogor</li>
+      <li>Arahan dan masukan dari Pembina IRMA</li>
+      <li>Kesepakatan dalam rapat kerja awal periode kepengurusan</li>
+    </ul>
+
+    <div class="sub-section"><h3 class="c7">3. Tahapan Pembuatan Program</h3></div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-7)">1</div>
+        <div class="tl-title">Tahap 1 — Penggalian Ide dan Usulan</div>
+        <div class="tl-body">
+          <ul>
+            <li>Setiap anggota sekbid dapat mengajukan ide kegiatan kepada Ketua Sekbid masing-masing.</li>
+            <li>Ketua Sekbid menghimpun semua ide dan menyeleksi yang relevan dengan bidangnya.</li>
+            <li>Ketua Sekbid menyusun draf awal usulan program beserta gambaran singkat tujuan dan mekanisme kegiatan.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-7)">2</div>
+        <div class="tl-title">Tahap 2 — Musyawarah dan Rapat Kerja</div>
+        <div class="tl-body">
+          <ul>
+            <li>Seluruh usulan program dari setiap sekbid dikumpulkan dan dibawa ke rapat kerja pengurus.</li>
+            <li>Rapat kerja dipimpin oleh Ketua IRMA dan dihadiri seluruh pengurus inti serta Ketua Sekbid.</li>
+            <li>Setiap sekbid mempresentasikan usulan programnya.</li>
+            <li>Pengurus berdiskusi untuk menghindari tumpang tindih jadwal dan program.</li>
+            <li>Program yang disepakati dicatat oleh Sekretaris sebagai Program Kerja Resmi.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-7)">3</div>
+        <div class="tl-title">Tahap 3 — Persetujuan Pembina</div>
+        <div class="tl-body">
+          <ul>
+            <li>Ketua IRMA menyampaikan daftar Program Kerja yang telah disepakati kepada Pembina IRMA.</li>
+            <li>Pembina memberikan arahan, koreksi, atau persetujuan.</li>
+            <li>Program Kerja yang telah disetujui menjadi acuan pelaksanaan selama satu periode.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-7)">4</div>
+        <div class="tl-title">Tahap 4 — Penyusunan Proposal Kegiatan</div>
+        <div class="tl-body">
+          <p>Setelah program disetujui, untuk setiap pelaksanaan kegiatan wajib dibuat proposal. Proposal disusun oleh Sekretaris bersama Sekbid terkait. Proposal minimal memuat:</p>
+          <ul>
+            <li>Nama dan latar belakang kegiatan</li>
+            <li>Tujuan kegiatan</li>
+            <li>Sasaran peserta</li>
+            <li>Waktu, tempat, dan susunan acara</li>
+            <li>Kepanitiaan (susunan panitia)</li>
+            <li>Rencana Anggaran Biaya (RAB)</li>
+            <li>Permohonan izin kepada pihak sekolah / pembina</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-7)">5</div>
+        <div class="tl-title">Tahap 5 — Pengajuan Anggaran</div>
+        <div class="tl-body">
+          <ul>
+            <li>Sekbid terkait mengajukan kebutuhan anggaran kepada Bendahara IRMA.</li>
+            <li>Bendahara memeriksa ketersediaan dana dan kesesuaian anggaran.</li>
+            <li>Ketua IRMA menyetujui penggunaan dana.</li>
+            <li>Setiap pengeluaran harus disertai bukti transaksi (kwitansi, nota, dll).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent-7)">6</div>
+        <div class="tl-title">Tahap 6 — Pelaksanaan Kegiatan</div>
+        <div class="tl-body">
+          <ul>
+            <li>Sekbid terkait menjalankan kegiatan sesuai proposal yang telah disetujui.</li>
+            <li>Ketua IRMA berperan sebagai penanggung jawab organisasi, sedangkan Ketua Sekbid sebagai penanggung jawab teknis.</li>
+            <li>Sekbid Media dan Kreatif mendokumentasikan jalannya kegiatan.</li>
+            <li>Apabila terdapat perubahan teknis mendadak, Ketua Sekbid wajib melaporkan kepada Ketua IRMA.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item" style="margin-bottom:0">
+        <div class="tl-dot" style="background:var(--accent-1)">7</div>
+        <div class="tl-title">Tahap 7 — Pelaporan dan Evaluasi</div>
+        <div class="tl-body">
+          <ul>
+            <li>Setelah kegiatan selesai, Sekbid terkait menyusun Laporan Kegiatan selambat-lambatnya 7 hari setelah pelaksanaan.</li>
+            <li>Laporan diserahkan kepada Sekretaris untuk diarsipkan.</li>
+            <li>Evaluasi kegiatan dilaksanakan dalam rapat evaluasi pengurus.</li>
+            <li>Hasil evaluasi menjadi bahan perbaikan untuk kegiatan berikutnya.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c7">4. Diagram Alur Pembuatan Program</h3></div>
+    <div class="diagram-wrap">
+      <div class="diagram-inner">
+        <div style="text-align:center;padding:4px">
+          <div style="background:var(--accent-7);color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">💡 Ide dari<br>Anggota / Sekbid</div>
+        </div>
+        <div style="color:#bbb;padding:0 4px;font-size:20px">→</div>
+        <div style="text-align:center;padding:4px">
+          <div style="background:#27ae60;color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">🔍 Seleksi oleh<br>Ketua Sekbid</div>
+        </div>
+        <div style="color:#bbb;padding:0 4px;font-size:20px">→</div>
+        <div style="text-align:center;padding:4px">
+          <div style="background:#1d6fa1;color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">🤝 Rapat Kerja<br>Pengurus</div>
+        </div>
+        <div style="color:#bbb;padding:0 4px;font-size:20px">→</div>
+        <div style="text-align:center;padding:4px">
+          <div style="background:#7b3f00;color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">👑 Persetujuan<br>Ketua IRMA</div>
+        </div>
+        <div style="color:#bbb;padding:0 4px;font-size:20px">→</div>
+        <div style="text-align:center;padding:4px">
+          <div style="background:#5c2d91;color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">✅ Persetujuan<br>Pembina</div>
+        </div>
+        <div style="color:#bbb;padding:0 4px;font-size:20px">→</div>
+        <div style="text-align:center;padding:4px">
+          <div style="background:#b5451b;color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">📋 Proposal<br>&amp; RAB</div>
+        </div>
+        <div style="color:#bbb;padding:0 4px;font-size:20px">→</div>
+        <div style="text-align:center;padding:4px">
+          <div style="background:#e9a825;color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">💰 Anggaran<br>ke Bendahara</div>
+        </div>
+        <div style="color:#bbb;padding:0 4px;font-size:20px">→</div>
+        <div style="text-align:center;padding:4px">
+          <div style="background:#2d6a4f;color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">🚀 Pelaksanaan<br>Kegiatan</div>
+        </div>
+        <div style="color:#bbb;padding:0 4px;font-size:20px">→</div>
+        <div style="text-align:center;padding:4px">
+          <div style="background:#1a5276;color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">📊 Laporan<br>&amp; Evaluasi</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c7">5. Ketentuan Khusus dalam Pembuatan Program</h3></div>
+    <div class="cards cards-2">
+      <div class="card" style="border-top:3px solid var(--accent-7)">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">⏰</div>
+        <div class="card-title">Batas Waktu Pengajuan</div>
+        <ul>
+          <li style="font-size:13px">Usulan program kerja disampaikan paling lambat 2 minggu sebelum rapat kerja awal periode</li>
+          <li style="font-size:13px">Proposal kegiatan disampaikan kepada Pembina IRMA paling lambat 2 minggu sebelum pelaksanaan</li>
+          <li style="font-size:13px">Pengajuan anggaran dilakukan paling lambat 1 minggu sebelum pelaksanaan</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid #27ae60">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">⚡</div>
+        <div class="card-title">Program Mendadak atau Situasional</div>
+        <ul>
+          <li style="font-size:13px">Apabila ada kegiatan yang bersifat mendadak (misalnya merespons bencana atau undangan mendadak dari sekolah), Ketua IRMA dapat mengambil keputusan cepat setelah berkoordinasi minimal dengan Wakil Ketua dan Bendahara</li>
+          <li style="font-size:13px">Laporan kegiatan mendadak tetap wajib dibuat setelahnya</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid #1d6fa1">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">🔀</div>
+        <div class="card-title">Kegiatan Lintas Sekbid</div>
+        <ul>
+          <li style="font-size:13px">Kegiatan yang melibatkan lebih dari satu sekbid harus dikoordinasikan dalam rapat pengurus</li>
+          <li style="font-size:13px">Tanggung jawab teknis dibagi sesuai bidang masing-masing sekbid yang terlibat</li>
+          <li style="font-size:13px">Ketua IRMA menunjuk salah satu Ketua Sekbid sebagai koordinator kegiatan</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid #c0392b">
+        <div style="font-size:28px;margin-bottom:4px;text-align:center">🔄</div>
+        <div class="card-title">Perubahan Program Kerja</div>
+        <ul>
+          <li style="font-size:13px">Perubahan program kerja (penambahan, penundaan, atau penghapusan) hanya dapat dilakukan melalui rapat pengurus</li>
+          <li style="font-size:13px">Keputusan perubahan dilaporkan kepada Pembina IRMA</li>
+          <li style="font-size:13px">Sekretaris mencatat semua perubahan dalam dokumen Program Kerja resmi</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-section"><h3 class="c7">6. Dokumen yang Wajib Ada dalam Setiap Program</h3></div>
+    <div class="table-wrap"><table class="doc-table">
+      <thead><tr><th>Dokumen</th><th>Keterangan</th></tr></thead>
+      <tbody>
+        <tr><td>📝 Formulir Usulan Program</td><td>Diisi oleh Ketua Sekbid saat mengajukan ide ke Ketua IRMA</td></tr>
+        <tr><td>📄 Proposal Kegiatan</td><td>Disusun oleh Sekretaris bersama Sekbid, berisi detail rencana kegiatan</td></tr>
+        <tr><td>💰 Rencana Anggaran Biaya (RAB)</td><td>Disiapkan Bendahara bersama Sekbid, memuat estimasi biaya</td></tr>
+        <tr><td>📬 Surat Permohonan Izin</td><td>Diajukan Sekretaris kepada Pembina / Kepala Sekolah</td></tr>
+        <tr><td>📋 Laporan Kegiatan</td><td>Dibuat Sekbid terkait maksimal 7 hari setelah pelaksanaan</td></tr>
+        <tr><td>📊 Laporan Keuangan</td><td>Dibuat Bendahara, mencatat realisasi penggunaan anggaran</td></tr>
+        <tr><td>📸 Dokumentasi Foto/Video</td><td>Diarsipkan oleh Sekbid Media &amp; Kreatif</td></tr>
+        <tr><td>📓 Notulen Rapat Evaluasi</td><td>Dicatat oleh Sekretaris dalam rapat evaluasi pasca-kegiatan</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="sub-section"><h3 class="c7">7. Prinsip Utama dalam Sistem Program IRMA</h3></div>
+    <div class="principle-block" style="background:linear-gradient(135deg,#e8f5ec,#eaf4ee)">
+      <div class="p-title">6 Prinsip</div>
+      <div class="principle-grid">
+        <div class="p-item"><div class="p-num" style="background:var(--accent-7)">1</div><div><strong>MUSYAWARAH</strong><br>Setiap program lahir dari diskusi bersama, bukan keputusan sepihak.</div></div>
+        <div class="p-item"><div class="p-num" style="background:var(--accent-7)">2</div><div><strong>TRANSPARANSI</strong><br>Setiap rencana, anggaran, dan laporan dapat diketahui seluruh pengurus.</div></div>
+        <div class="p-item"><div class="p-num" style="background:var(--accent-7)">3</div><div><strong>AKUNTABILITAS</strong><br>Setiap program wajib dipertanggungjawabkan melalui laporan kegiatan.</div></div>
+        <div class="p-item"><div class="p-num" style="background:var(--accent-7)">4</div><div><strong>KETERATURAN</strong><br>Program mengikuti alur yang sudah ditetapkan dari usulan hingga evaluasi.</div></div>
+        <div class="p-item"><div class="p-num" style="background:var(--accent-7)">5</div><div><strong>SINKRONISASI</strong><br>Program antar-sekbid tidak saling tumpang tindih.</div></div>
+        <div class="p-item"><div class="p-num" style="background:var(--accent-7)">6</div><div><strong>KEBERLANJUTAN</strong><br>Setiap evaluasi menjadi pijakan perbaikan untuk program berikutnya.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENUTUP -->
+  </div><!-- /content -->
+
+  <div class="closing" id="penutup">
+    <h2>Penutup</h2>
+    <p>Pedoman ini disusun sebagai acuan bagi seluruh pengurus dan anggota IRMA SMKN 3 Bogor dalam menjalankan organisasi secara tertib, terstruktur, dan bertanggung jawab.</p>
+    <p>Dengan memahami dan menjalankan pembagian tugas, alur koordinasi, kewenangan, sistem evaluasi, serta prosedur pembuatan program yang tertuang dalam pedoman ini, diharapkan IRMA dapat:</p>
+    <ul>
+      <li>Menjalankan setiap program dengan lancar dan terarah</li>
+      <li>Menghindari tumpang tindih tugas dan kewenangan</li>
+      <li>Membangun budaya organisasi yang musyawarah, transparan, dan akuntabel</li>
+      <li>Mencetak kader-kader pemimpin muslim yang berkualitas</li>
+      <li>Memberikan manfaat nyata bagi anggota dan lingkungan sekolah</li>
+    </ul>
+    <p style="margin-top:16px">Pedoman ini bersifat dinamis dan dapat diperbarui sesuai kebutuhan melalui rapat pengurus dengan persetujuan Pembina IRMA.</p>
+    <div class="sig-box">
+      <div class="sig-inner">
+        <p>Bogor, ____________________</p>
+        <p>Pembina IRMA SMKN 3 Bogor</p>
+        <div class="sig-line">________________________________</div>
+      </div>
+    </div>
+  </div>
+
+</main><!-- /main -->
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Progress bar
+const bar = document.getElementById('progress-bar');
+const bTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = document.body.scrollHeight - window.innerHeight;
+  bar.style.width = (scrolled / total * 100) + '%';
+  bTop.classList.toggle('visible', scrolled > 400);
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const sidebar   = document.getElementById('sidebar');
+const overlay   = document.getElementById('overlay');
+function closeSidebar() {
+  hamburger.classList.remove('open');
+  sidebar.classList.remove('open');
+  overlay.classList.remove('open');
+}
+hamburger.addEventListener('click', () => {
+  const isOpen = sidebar.classList.contains('open');
+  isOpen ? closeSidebar() : (hamburger.classList.add('open'), sidebar.classList.add('open'), overlay.classList.add('open'));
+});
+overlay.addEventListener('click', closeSidebar);
+document.querySelectorAll('.nav-item').forEach(n => n.addEventListener('click', () => {
+  if (window.innerWidth <= 900) closeSidebar();
+}));
+
+// Active nav
+const navItems = document.querySelectorAll('.nav-item');
+const sections = document.querySelectorAll('[id]');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navItems.forEach(n => n.classList.remove('active'));
+      const link = document.querySelector(`.nav-item[href="#${e.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => obs.observe(s));
+
+// ── SCROLL REVEAL ────────────────────────────────────────────
+// Add reveal class to all animatable elements
+const revealSelectors = [
+  '.bab-header',
+  '.sub-section',
+  '.prose',
+  '.callout',
+  '.card',
+  '.sekbid-card',
+  '.timeline',
+  '.step-flow',
+  '.step-flow-v',
+  '.diagram-wrap',
+  '.principle-block',
+  '.eval-grid',
+  '.table-wrap',
+  '.divider',
+  '.flow',
+  'h4.label',
+  '.list',
+  '.closing',
+];
+
+// Tag cards inside grids as reveal-group for stagger
+document.querySelectorAll('.cards').forEach(grid => {
+  grid.classList.add('reveal-group');
+});
+
+document.querySelectorAll('.eval-grid').forEach(grid => {
+  grid.classList.add('reveal-group');
+});
+
+// Tag individual non-grid elements as plain reveal
+revealSelectors.forEach(sel => {
+  document.querySelectorAll(sel).forEach(el => {
+    // Skip if already inside a reveal-group (cards grid handles its children)
+    if (!el.closest('.reveal-group')) {
+      el.classList.add('reveal');
+    }
+  });
+});
+
+// IntersectionObserver for scroll reveal
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -120px 0px'
+});
+
+document.querySelectorAll('.reveal, .reveal-group').forEach(el => {
+  revealObs.observe(el);
+});
+</script>
+</body>
+</html>
