@@ -128,11 +128,6 @@ body {
   color: white;
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .cover-bg-img {
@@ -451,6 +446,17 @@ h4.label {
 .callout.tip  { background: #eaf4ee; border-color: #b2d8c2; }
 .callout.warn { background: #fef9e7; border-color: #f5d76e; }
 .callout.principle { background: #f3f2ef; border-color: #d9d7d0; }
+
+/* ── HAL YANG DIKOORDINASIKAN – yellow attention card ────────── */
+.card-attention {
+  background: #fffbea;
+  border: 1.5px solid #f5c842;
+  border-left: 4px solid #e6b800;
+  border-radius: 10px;
+  padding: 14px 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
 /* ── FLOW / ALUR ─────────────────────────────────────────────── */
 .flow {
@@ -1011,6 +1017,11 @@ h4.label {
   .main { margin-left: 0; }
   .content { padding: 0 16px 60px; }
   .cover {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 72px 24px 48px;
   }
   .cover-inner {
@@ -1054,6 +1065,29 @@ h4.label {
   }
   .sidebar.open { transform: translateX(0); }
   .sidebar-overlay.open { display: block; }
+
+  /* Step-flow vertikal di mobile */
+  .step-flow {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 16px 20px;
+  }
+  .sf-step {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    width: 100%;
+  }
+  .sf-box {
+    width: 100%;
+    white-space: normal;
+  }
+  .sf-arrow {
+    transform: rotate(90deg);
+    display: block;
+    padding: 2px 0;
+  }
 }
 
 /* ─ 640px: collapse 3-col → 2-col ──────────────────────────── */
@@ -1100,6 +1134,10 @@ h4.label {
   gap: 6px;
   margin: 14px 0 20px;
   justify-content: center;
+  background: #f7f6f3;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
 }
 
 .sf-step {
@@ -1195,9 +1233,6 @@ h4.label {
 }
 @media (max-width: 480px) {
   .eval-grid { grid-template-columns: 1fr; }
-  .step-flow { flex-direction: column; align-items: flex-start; }
-  .sf-box { white-space: normal; width: 100%; }
-  .sf-arrow { transform: rotate(90deg); margin-left: 14px; }
 }
 
 
@@ -1754,11 +1789,14 @@ h4.label {
     <ul class="list">
       <li>Koordinasi paling sering terjadi saat menjalankan kegiatan (Kajian, sanlat, pelatihan sofskil, dll)</li>
     </ul>
-    <div class="cards cards-3">
-      <div class="card" style="width:fit-content;min-width:180px">
-        <div class="card-title">Hal yang Dikoordinasikan</div>
-        <ul><li>Konsep kegiatan</li><li>Pembagian tugas</li><li>Waktu dan tempat</li><li>Kebutuhan perlengkapan</li></ul>
-      </div>
+    <div class="card-attention reveal">
+      <div class="card-title" style="color:#7d5a00;text-align:left;margin-bottom:6px">⚠️ Hal yang Dikoordinasikan</div>
+      <ul style="list-style:none;margin:0;padding:0">
+        <li style="font-size:13px;padding:2px 0;color:#5a3e00">• Konsep kegiatan</li>
+        <li style="font-size:13px;padding:2px 0;color:#5a3e00">• Pembagian tugas</li>
+        <li style="font-size:13px;padding:2px 0;color:#5a3e00">• Waktu dan tempat</li>
+        <li style="font-size:13px;padding:2px 0;color:#5a3e00">• Kebutuhan perlengkapan</li>
+      </ul>
     </div>
     <h4 class="label">Alur Saran &amp; Masukan</h4>
     <div class="step-flow">
@@ -1787,11 +1825,13 @@ h4.label {
 
     <div class="sub-section"><h3 class="c2">3. Administrasi dan Perizinan</h3></div>
     <p class="prose">Kegiatan organisasi di sekolah harus melalui prosedur.</p>
-    <div class="cards cards-2" style="margin-bottom:8px">
-      <div class="card" style="width:fit-content;min-width:180px">
-        <div class="card-title">Hal yang Dikoordinasikan</div>
-        <ul><li>Pembuatan proposal</li><li>Izin kegiatan ke sekolah</li><li>Laporan kegiatan</li></ul>
-      </div>
+    <div class="card-attention reveal">
+      <div class="card-title" style="color:#7d5a00;text-align:left;margin-bottom:6px">⚠️ Hal yang Dikoordinasikan</div>
+      <ul style="list-style:none;margin:0;padding:0">
+        <li style="font-size:13px;padding:2px 0;color:#5a3e00">• Pembuatan proposal</li>
+        <li style="font-size:13px;padding:2px 0;color:#5a3e00">• Izin kegiatan ke sekolah</li>
+        <li style="font-size:13px;padding:2px 0;color:#5a3e00">• Laporan kegiatan</li>
+      </ul>
     </div>
     <h4 class="label">Alur Koordinasi</h4>
     <div class="step-flow">
