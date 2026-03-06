@@ -128,15 +128,20 @@ body {
   color: white;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cover-bg-img {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=1400&q=80');
+  background-image: url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=1600&q=85');
   background-size: cover;
-  background-position: center 40%;
-  opacity: 0.13;
+  background-position: center 55%;
+  opacity: 0.12;
   mix-blend-mode: luminosity;
   z-index: 0;
   pointer-events: none;
@@ -1006,11 +1011,6 @@ h4.label {
   .main { margin-left: 0; }
   .content { padding: 0 16px 60px; }
   .cover {
-    min-height: 100dvh;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding: 72px 24px 48px;
   }
   .cover-inner {
@@ -1755,7 +1755,7 @@ h4.label {
       <li>Koordinasi paling sering terjadi saat menjalankan kegiatan (Kajian, sanlat, pelatihan sofskil, dll)</li>
     </ul>
     <div class="cards cards-3">
-      <div class="card" style="grid-column:1/-1">
+      <div class="card" style="width:fit-content;min-width:180px">
         <div class="card-title">Hal yang Dikoordinasikan</div>
         <ul><li>Konsep kegiatan</li><li>Pembagian tugas</li><li>Waktu dan tempat</li><li>Kebutuhan perlengkapan</li></ul>
       </div>
@@ -1788,7 +1788,7 @@ h4.label {
     <div class="sub-section"><h3 class="c2">3. Administrasi dan Perizinan</h3></div>
     <p class="prose">Kegiatan organisasi di sekolah harus melalui prosedur.</p>
     <div class="cards cards-2" style="margin-bottom:8px">
-      <div class="card" style="grid-column:1/-1">
+      <div class="card" style="width:fit-content;min-width:180px">
         <div class="card-title">Hal yang Dikoordinasikan</div>
         <ul><li>Pembuatan proposal</li><li>Izin kegiatan ke sekolah</li><li>Laporan kegiatan</li></ul>
       </div>
