@@ -801,6 +801,235 @@ h4.label {
   margin-left: 6px;
   vertical-align: middle;
 }
+
+/* ── RESPONSIVE GRIDS ─────────────────────────────────────────── */
+.cards-2 { grid-template-columns: 1fr 1fr; }
+.cards-3 { grid-template-columns: 1fr 1fr 1fr; }
+.mt-16   { margin-top: 16px; }
+
+/* ── HAMBURGER BUTTON ────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 14px; left: 14px;
+  z-index: 300;
+  width: 40px; height: 40px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+.hamburger span {
+  display: block;
+  width: 18px; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all .25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── SIDEBAR OVERLAY ─────────────────────────────────────────── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 99;
+}
+
+/* ── FLOW-H RESPONSIVE ───────────────────────────────────────── */
+.flow-h { flex-wrap: wrap; gap: 6px; }
+.flow-h .fh-step { flex-wrap: wrap; }
+
+/* ── TABLE SCROLL WRAP ───────────────────────────────────────── */
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ── DIAGRAM ALUR WRAP ───────────────────────────────────────── */
+.diagram-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #f7f6f3;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.diagram-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+}
+
+/* ─ 900px: show hamburger, hide sidebar ─────────────────────── */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 0px; }
+  .main { margin-left: 0; }
+  .content { padding: 0 16px 60px; }
+  .cover { padding: 64px 20px 40px; }
+  #progress-bar { left: 0; }
+
+  .hamburger { display: flex; }
+
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .28s cubic-bezier(.4,0,.2,1);
+    width: 260px;
+    display: flex;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.open { display: block; }
+}
+
+/* ─ 640px: collapse 3-col → 2-col ──────────────────────────── */
+@media (max-width: 640px) {
+  .cards-3 { grid-template-columns: 1fr 1fr; }
+  .sekbid-body { grid-template-columns: 1fr 1fr; }
+  .bab h2 { font-size: 20px; }
+  .cover h1 { font-size: 26px; }
+  .cover-sub { font-size: 14px; }
+  .closing { padding: 36px 20px; }
+  .sig-box { justify-content: center; }
+  .principle-grid { grid-template-columns: 1fr; }
+  .compare-table { font-size: 12px; }
+  .compare-table th, .compare-table td { padding: 8px 10px; }
+}
+
+/* ─ 480px: fully single column ─────────────────────────────── */
+@media (max-width: 480px) {
+  .cards   { grid-template-columns: 1fr !important; }
+  .cards-2 { grid-template-columns: 1fr; }
+  .cards-3 { grid-template-columns: 1fr; }
+  .sekbid-body { grid-template-columns: 1fr; }
+  .flow-h { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .flow-h .fh-arrow { transform: rotate(90deg); padding: 2px 0 2px 12px; }
+  .fh-box { white-space: normal; width: 100%; text-align: left; }
+  .cover { padding: 60px 16px 36px; }
+  .cover-chips { gap: 6px; }
+  .chip { font-size: 11px; padding: 4px 10px; }
+  .bab-icon { width: 40px; height: 40px; font-size: 20px; }
+  .bab h2 { font-size: 18px; }
+  .content { padding: 0 12px 60px; }
+  .tl-title { font-size: 13.5px; }
+  .tl-body { font-size: 12.5px; }
+  .prose { font-size: 13.5px; }
+  .list li { font-size: 13.5px; }
+  #back-top { bottom: 16px; right: 16px; }
+}
+
+/* ── STEP FLOW (replaces flow-h) ─────────────────────────────── */
+.step-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 20px;
+}
+
+.sf-step {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sf-box {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.sf-box.accent { background: #eaf4ee; border-color: #b2d8c2; color: var(--accent-1); }
+.sf-box.accent-blue { background: #e8f0fc; border-color: #c5dcf8; color: var(--accent-2); }
+.sf-box.accent-yellow { background: #fff9e6; border-color: #ffe08a; color: #7d5a00; }
+.sf-box.accent-orange { background: #fdeee8; border-color: #f1b49a; color: var(--accent-5); }
+
+.sf-arrow {
+  color: #bbb;
+  font-size: 16px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Vertical step-flow (inside card, for alur koordinasi) */
+.step-flow-v {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 8px 0;
+}
+
+.sfv-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sfv-box {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  width: 100%;
+}
+
+.sfv-arrow {
+  color: #bbb;
+  font-size: 14px;
+  padding: 2px 0 2px 16px;
+}
+
+/* ── EVAL ICON GRID ──────────────────────────────────────────── */
+.eval-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.eval-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eval-card .ec-icon { font-size: 28px; margin-bottom: 8px; }
+.eval-card .ec-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+.eval-card .ec-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .eval-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .eval-grid { grid-template-columns: 1fr; }
+  .step-flow { flex-direction: column; align-items: flex-start; }
+  .sf-box { white-space: normal; width: 100%; }
+  .sf-arrow { transform: rotate(90deg); margin-left: 14px; }
+}
+
 </style>
 </head>
 <body>
@@ -810,7 +1039,11 @@ h4.label {
 <!-- ══════════════════════════════════════════════════════════════
      SIDEBAR
 ══════════════════════════════════════════════════════════════ -->
-<aside class="sidebar">
+<button class="hamburger" id="hamburger" aria-label="Toggle menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
   <div class="sidebar-brand">
     <div class="logo-icon">🕌</div>
     <h1>Pedoman Kepengurusan IRMA</h1>
@@ -886,7 +1119,7 @@ h4.label {
     <div class="sub-section"><h3 class="c1">1. Pengurus Inti</h3></div>
     <p class="prose">Pengurus Inti adalah unsur pimpinan organisasi yang bertanggung jawab atas pengelolaan dan keberlangsungan IRMA secara keseluruhan.</p>
 
-    <div class="cards" style="grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px;">
+    <div class="cards cards-3">
       <!-- Ketua -->
       <div class="card" style="border-top:3px solid var(--accent-1)">
         <div style="font-size:28px;margin-bottom:6px">👑</div>
@@ -1251,19 +1484,19 @@ h4.label {
       <li>Saat menentukan program kerja satu periode dari setiap sekbid atau 3 bulanan, menyusul kegiatan, menentukan jadwal, dll</li>
     </ul>
     <p class="prose" style="font-style:italic;color:var(--muted)">Tujuan: supaya program tidak tumpang tindih dan sesuai visi organisasi.</p>
-    <div class="flow-h" style="margin-top:12px">
-      <div class="fh-step"><div class="fh-box" style="background:#eaf4ee;border-color:#b2d8c2">Setiap Sekbid menyusun usulan program</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Ketua Sekbid</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Rapat Pengurus Inti</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Ketua IRMA</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box" style="background:#eaf4ee;border-color:#b2d8c2">Pembina IRMA</div></div>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box accent">Setiap Sekbid menyusun usulan program</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua Sekbid</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Rapat Pengurus Inti</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina IRMA</div></div>
     </div>
 
     <div class="sub-section"><h3 class="c2">2. Pelaksanaan Kegiatan</h3></div>
     <ul class="list">
       <li>Koordinasi paling sering terjadi saat menjalankan kegiatan (Kajian, sanlat, pelatihan sofskil, dll)</li>
     </ul>
-    <div class="cards" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="cards cards-3">
       <div class="card">
         <div class="card-title">Hal yang Dikoordinasikan</div>
         <ul><li>Konsep kegiatan</li><li>Pembagian tugas</li><li>Waktu dan tempat</li><li>Kebutuhan perlengkapan</li></ul>
@@ -1297,46 +1530,46 @@ h4.label {
     </div>
     <p class="prose" style="margin-top:8px">Bisa saling melibatkan beberapa sekbid yang dibutuhkan dari setiap pelaksanaan kegiatan</p>
     <h4 class="label">Alur pemberian Jobdesk atau arahan</h4>
-    <div class="flow-h">
-      <div class="fh-step"><div class="fh-box" style="background:#e8f0fc;border-color:#c5dcf8">Ketua IRMA</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Ketua Divisi</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Anggota Divisi</div></div>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box accent-blue">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua Divisi</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Anggota Divisi</div></div>
     </div>
 
     <div class="sub-section"><h3 class="c2">3. Administrasi dan Perizinan</h3></div>
     <p class="prose">Kegiatan organisasi di sekolah harus melalui prosedur.</p>
-    <div class="cards" style="grid-template-columns:1fr 1fr">
+    <div class="cards cards-2">
       <div class="card">
         <div class="card-title">Hal yang Dikoordinasikan</div>
         <ul><li>Pembuatan proposal</li><li>Izin kegiatan ke sekolah</li><li>Laporan kegiatan</li></ul>
       </div>
       <div class="card">
         <div class="card-title">Alur Koordinasi</div>
-        <div class="flow-h" style="flex-direction:column;align-items:flex-start">
-          <div class="fh-box" style="margin-bottom:4px">Sekbid</div><div style="color:#bbb;padding-left:12px">↓</div>
-          <div class="fh-box" style="margin-bottom:4px">Ketua IRMA</div><div style="color:#bbb;padding-left:12px">↓</div>
-          <div class="fh-box" style="margin-bottom:4px">Sekretaris</div><div style="color:#bbb;padding-left:12px">↓</div>
-          <div class="fh-box">Pembina</div>
+        <div class="step-flow-v">
+          <div class="sfv-item"><div class="sfv-box">Sekbid</div><div class="sfv-arrow">↓</div></div>
+          <div class="sfv-item"><div class="sfv-box">Ketua IRMA</div><div class="sfv-arrow">↓</div></div>
+          <div class="sfv-item"><div class="sfv-box">Sekretaris</div><div class="sfv-arrow">↓</div></div>
+          <div class="sfv-item"><div class="sfv-box">Pembina</div></div>
         </div>
       </div>
     </div>
 
     <div class="sub-section"><h3 class="c2">4. Pengelolaan Keuangan</h3></div>
     <p class="prose">Setiap kegiatan membutuhkan koordinasi dengan bendahara, seperti pengajuan dana kegiatan, pengumpulan donasi, laporan keuangan, dll</p>
-    <div class="flow-h">
-      <div class="fh-step"><div class="fh-box" style="background:#fff9e6;border-color:#ffe08a">Sekbid Kegiatan</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Ketua IRMA</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box" style="background:#fff9e6;border-color:#ffe08a">Bendahara</div></div>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box accent-yellow">Sekbid Kegiatan</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent-yellow">Bendahara</div></div>
     </div>
 
     <div class="sub-section"><h3 class="c2">5. Publikasi dan Informasi</h3></div>
     <p class="prose">Supaya kegiatan diketahui anggota atau siswa lain.</p>
     <ul class="list"><li>Desain poster</li><li>Pengumuman kegiatan</li><li>Dokumentasi</li></ul>
-    <div class="flow-h" style="margin-top:8px">
-      <div class="fh-step"><div class="fh-box">Sekbid Kegiatan</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box" style="background:#e8f0fc;border-color:#c5dcf8">Sekbid Media &amp; Kreatif</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Ketua IRMA</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Pembina IRMA</div></div>
+    <div class="step-flow">
+      <div class="sf-step"><div class="sf-box">Sekbid Kegiatan</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent-blue">Sekbid Media &amp; Kreatif</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina IRMA</div></div>
     </div>
 
     <div class="sub-section"><h3 class="c2">6. Evaluasi Kegiatan</h3></div>
@@ -1410,7 +1643,7 @@ h4.label {
       </div>
     </div>
 
-    <div class="cards" style="grid-template-columns:1fr 1fr;margin-bottom:24px">
+    <div class="cards cards-2">
       <div class="card" style="border-top:3px solid var(--accent-3)">
         <div style="font-size:28px;margin-bottom:6px">👑</div>
         <div class="card-title c3">Kewenangan Ketua IRMA</div>
@@ -1439,7 +1672,7 @@ h4.label {
     </div>
 
     <div class="sub-section"><h3 class="c3">Perbedaan Kewenangan</h3></div>
-    <table class="compare-table">
+    <div class="table-wrap"><table class="compare-table">
       <thead><tr>
         <th style="background:var(--accent-3)">Ketua IRMA</th>
         <th style="background:#c0762a">Ketua Sekbid</th>
@@ -1451,7 +1684,7 @@ h4.label {
         <tr><td>Penanggung jawab utama kegiatan</td><td>Penanggung jawab teknis bidang</td></tr>
         <tr><td>Berhubungan dengan pembina</td><td>Berkoordinasi dengan ketua</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div class="sub-section"><h3 class="c3">Contoh: Kegiatan Berbagi Takjil</h3></div>
     <p class="prose">Sekbid Sosial ingin mengadakan kegiatan.</p>
@@ -1491,7 +1724,7 @@ h4.label {
       </div>
     </div>
 
-    <div class="cards" style="grid-template-columns:1fr 1fr">
+    <div class="cards cards-2">
       <div class="card" style="border-top:3px solid var(--accent-4)">
         <div style="font-size:24px;margin-bottom:6px">🚫 Batasan Ketua IRMA</div>
         <p style="font-size:12px;color:var(--muted);margin-bottom:10px">Walaupun ketua adalah pemimpin organisasi, kewenangannya tetap tidak mutlak.</p>
@@ -1526,7 +1759,7 @@ h4.label {
     </div>
 
     <div class="sub-section"><h3 class="c4">Gambaran Singkat</h3></div>
-    <table class="compare-table">
+    <div class="table-wrap"><table class="compare-table">
       <thead><tr>
         <th style="background:var(--accent-4)">Ketua</th>
         <th style="background:#9b59b6">Ketua Sekbid</th>
@@ -1556,7 +1789,7 @@ h4.label {
 
     <p class="prose">Sifatnya lebih operasional (pelaksana kegiatan). Karena itu, penting juga ada batasan kewenangan anggota agar organisasi berjalan tertib dan tidak terjadi kebingungan dalam mengambil keputusan.</p>
 
-    <div class="cards" style="grid-template-columns:1fr 1fr">
+    <div class="cards cards-2">
       <div class="card" style="border-top:3px solid var(--accent-5)">
         <div style="font-size:24px;margin-bottom:6px">✅ Anggota Boleh</div>
         <ul>
@@ -1596,11 +1829,11 @@ h4.label {
     </ul>
 
     <div class="sub-section"><h3 class="c5">Alur Kewenangan yang Ideal</h3></div>
-    <div class="flow-h" style="margin-bottom:24px">
-      <div class="fh-step"><div class="fh-box" style="background:#fdeee8;border-color:#f1b49a">Anggota</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Ketua Sekbid</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box">Ketua IRMA</div><span class="fh-arrow">→</span></div>
-      <div class="fh-step"><div class="fh-box" style="background:#eaf4ee;border-color:#b2d8c2">Pembina</div></div>
+    <div class="step-flow" style="margin-bottom:24px">
+      <div class="sf-step"><div class="sf-box accent-orange">Anggota</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua Sekbid</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box">Ketua IRMA</div><span class="sf-arrow">→</span></div>
+      <div class="sf-step"><div class="sf-box accent">Pembina</div></div>
     </div>
 
     <div class="callout tip">
@@ -1628,36 +1861,36 @@ h4.label {
     <p class="prose">Evaluasi penting supaya organisasi tidak hanya menjalankan kegiatan, tetapi juga belajar dari pengalaman.</p>
 
     <div class="sub-section"><h3 class="c6">1. Tujuan Evaluasi Organisasi</h3></div>
-    <div class="cards" style="grid-template-columns:repeat(3,1fr)">
-      <div class="card" style="text-align:center;padding:20px 12px">
-        <div style="font-size:32px;margin-bottom:8px">🎯</div>
-        <div style="font-size:13px;font-weight:600">Kesesuaian Rencana</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:4px">Mengetahui apakah kegiatan berjalan sesuai rencana</div>
+    <div class="eval-grid">
+      <div class="eval-card">
+        <div class="ec-icon">🎯</div>
+        <div class="ec-title">Kesesuaian Rencana</div>
+        <div class="ec-desc">Mengetahui apakah kegiatan berjalan sesuai rencana</div>
       </div>
-      <div class="card" style="text-align:center;padding:20px 12px">
-        <div style="font-size:32px;margin-bottom:8px">🔍</div>
-        <div style="font-size:13px;font-weight:600">Identifikasi Kendala</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:4px">Mengetahui kendala atau masalah yang terjadi</div>
+      <div class="eval-card">
+        <div class="ec-icon">🔍</div>
+        <div class="ec-title">Identifikasi Kendala</div>
+        <div class="ec-desc">Mengetahui kendala atau masalah yang terjadi</div>
       </div>
-      <div class="card" style="text-align:center;padding:20px 12px">
-        <div style="font-size:32px;margin-bottom:8px">🛠</div>
-        <div style="font-size:13px;font-weight:600">Perbaikan</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:4px">Menemukan perbaikan untuk kegiatan selanjutnya</div>
+      <div class="eval-card">
+        <div class="ec-icon">🛠</div>
+        <div class="ec-title">Perbaikan</div>
+        <div class="ec-desc">Menemukan perbaikan untuk kegiatan selanjutnya</div>
       </div>
-      <div class="card" style="text-align:center;padding:20px 12px">
-        <div style="font-size:32px;margin-bottom:8px">📋</div>
-        <div style="font-size:13px;font-weight:600">Kinerja Pengurus</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:4px">Menilai kinerja pengurus dan sekbid</div>
+      <div class="eval-card">
+        <div class="ec-icon">📋</div>
+        <div class="ec-title">Kinerja Pengurus</div>
+        <div class="ec-desc">Menilai kinerja pengurus dan sekbid</div>
       </div>
-      <div class="card" style="text-align:center;padding:20px 12px;grid-column:span 2">
-        <div style="font-size:32px;margin-bottom:8px">📝</div>
-        <div style="font-size:13px;font-weight:600">Bahan Perencanaan</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:4px">Menjadi bahan penyusunan program kerja periode berikutnya</div>
+      <div class="eval-card">
+        <div class="ec-icon">📝</div>
+        <div class="ec-title">Bahan Perencanaan</div>
+        <div class="ec-desc">Menjadi bahan penyusunan program kerja periode berikutnya</div>
       </div>
     </div>
 
     <div class="sub-section"><h3 class="c6">2. Waktu Evaluasi Dilakukan</h3></div>
-    <div class="cards" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="cards cards-3">
       <div class="card" style="border-top:3px solid var(--accent-6)">
         <div style="font-size:24px;margin-bottom:4px">⚡</div>
         <div class="card-title">Evaluasi Setelah Kegiatan</div>
@@ -1701,7 +1934,7 @@ h4.label {
         Fokus pada kegiatan, bukan menyalahkan orang &nbsp;·&nbsp; Memberi masukan dengan cara yang baik &nbsp;·&nbsp; Mencari solusi bersama &nbsp;·&nbsp; Semua pengurus boleh menyampaikan pendapat
       </div>
     </div>
-    <div class="cards" style="grid-template-columns:1fr 1fr;margin-top:12px">
+    <div class="cards cards-2">
       <div class="card" style="background:#f7f6f3">
         <div class="card-title">❓ Pertanyaan Evaluasi Pasca Kegiatan</div>
         <ul>
@@ -1743,7 +1976,7 @@ h4.label {
 
     <div class="sub-section"><h3 class="c7">1. Pengertian Program Kerja</h3></div>
     <p class="prose">Program kerja adalah rencana kegiatan yang disusun secara sistematis oleh masing-masing sekbid atau pengurus inti IRMA dalam satu periode kepengurusan, yang memuat tujuan, sasaran, mekanisme pelaksanaan, anggaran, dan indikator keberhasilan.</p>
-    <div class="cards" style="grid-template-columns:1fr 1fr">
+    <div class="cards cards-2">
       <div class="card" style="border-left:4px solid var(--accent-7)">
         <div style="font-size:22px;margin-bottom:6px">🔁</div>
         <div class="card-title">Program Kerja Rutin</div>
@@ -1862,8 +2095,8 @@ h4.label {
     </div>
 
     <div class="sub-section"><h3 class="c7">4. Diagram Alur Pembuatan Program</h3></div>
-    <div style="background:#f7f6f3;border:1px solid var(--border);border-radius:12px;padding:20px;overflow-x:auto;margin-bottom:20px">
-      <div style="display:flex;flex-wrap:wrap;gap:0;align-items:center;justify-content:center">
+    <div class="diagram-wrap">
+      <div class="diagram-inner">
         <div style="text-align:center;padding:4px">
           <div style="background:var(--accent-7);color:white;border-radius:8px;padding:8px 12px;font-size:12px;font-weight:600;min-width:100px">💡 Ide dari<br>Anggota / Sekbid</div>
         </div>
@@ -1903,7 +2136,7 @@ h4.label {
     </div>
 
     <div class="sub-section"><h3 class="c7">5. Ketentuan Khusus dalam Pembuatan Program</h3></div>
-    <div class="cards" style="grid-template-columns:1fr 1fr">
+    <div class="cards cards-2">
       <div class="card" style="border-top:3px solid var(--accent-7)">
         <div class="card-title">⏰ Batas Waktu Pengajuan</div>
         <ul>
@@ -1938,7 +2171,7 @@ h4.label {
     </div>
 
     <div class="sub-section"><h3 class="c7">6. Dokumen yang Wajib Ada dalam Setiap Program</h3></div>
-    <table class="doc-table">
+    <div class="table-wrap"><table class="doc-table">
       <thead><tr><th>Dokumen</th><th>Keterangan</th></tr></thead>
       <tbody>
         <tr><td>📝 Formulir Usulan Program</td><td>Diisi oleh Ketua Sekbid saat mengajukan ide ke Ketua IRMA</td></tr>
@@ -1950,7 +2183,7 @@ h4.label {
         <tr><td>📸 Dokumentasi Foto/Video</td><td>Diarsipkan oleh Sekbid Media &amp; Kreatif</td></tr>
         <tr><td>📓 Notulen Rapat Evaluasi</td><td>Dicatat oleh Sekretaris dalam rapat evaluasi pasca-kegiatan</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <div class="sub-section"><h3 class="c7">7. Prinsip Utama dalam Sistem Program IRMA</h3></div>
     <div class="principle-block" style="background:linear-gradient(135deg,#e8f5ec,#eaf4ee)">
@@ -2004,6 +2237,24 @@ window.addEventListener('scroll', () => {
   bar.style.width = (scrolled / total * 100) + '%';
   bTop.classList.toggle('visible', scrolled > 400);
 });
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const sidebar   = document.getElementById('sidebar');
+const overlay   = document.getElementById('overlay');
+function closeSidebar() {
+  hamburger.classList.remove('open');
+  sidebar.classList.remove('open');
+  overlay.classList.remove('open');
+}
+hamburger.addEventListener('click', () => {
+  const isOpen = sidebar.classList.contains('open');
+  isOpen ? closeSidebar() : (hamburger.classList.add('open'), sidebar.classList.add('open'), overlay.classList.add('open'));
+});
+overlay.addEventListener('click', closeSidebar);
+document.querySelectorAll('.nav-item').forEach(n => n.addEventListener('click', () => {
+  if (window.innerWidth <= 900) closeSidebar();
+}));
 
 // Active nav
 const navItems = document.querySelectorAll('.nav-item');
