@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#1a5c3e" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#1a5c3e" media="(prefers-color-scheme: dark)"/>
 <title>Pedoman Kepengurusan IRMA – SMKN 3 Bogor</title>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -18,7 +20,7 @@
 <meta property="og:image:width"  content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt"   content="Pedoman Kepengurusan IRMA SMKN 3 Bogor" />
-<meta property="og:url"         content="https://sudrajateguh.github.io/Pedoman-IRMA-SMKN-3-Bogor/" />
+<meta property="og:url"         content="https://YOUR-USERNAME.github.io/YOUR-REPO/" />
 <meta property="og:locale"      content="id_ID" />
 
 <!-- Twitter / WhatsApp fallback -->
@@ -933,13 +935,124 @@ h4.label {
   #progress-bar { left: 0; }
 }
 
-/* ── PARTICLE CANVAS OVERLAY ─────────────────────────────────── */
-#particle-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.55;
+/* ── TEXT SELECTION HIGHLIGHT ────────────────────────────────── */
+::selection {
+  background: rgba(82, 183, 136, 0.32);
+  color: inherit;
+}
+::-moz-selection {
+  background: rgba(82, 183, 136, 0.32);
+  color: inherit;
+}
+
+/* ── CUSTOM CURSOR (desktop only) ────────────────────────────── */
+@media (min-width: 901px) {
+  * { cursor: none !important; }
+
+  #cursor-ring {
+    position: fixed;
+    top: 0; left: 0;
+    width: 38px; height: 38px;
+    border: 1.5px solid rgba(45, 106, 79, 0.65);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    mix-blend-mode: multiply;
+    box-shadow: none;
+    transition:
+      width       0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      height      0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.18s ease,
+      background  0.18s ease,
+      box-shadow  0.22s ease;
+  }
+
+  #cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 5px; height: 5px;
+    background: rgba(45, 106, 79, 0.9);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    transition:
+      width  0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      background 0.18s ease,
+      box-shadow 0.22s ease;
+  }
+
+  /* ── HOVER: ring lebih besar + glow hijau, dot ikut membesar ── */
+  #cursor-ring.hovering {
+    width: 60px; height: 60px;
+    border-color: rgba(82, 183, 136, 0.75);
+    background: rgba(82, 183, 136, 0.07);
+    box-shadow:
+      0 0 0   4px rgba(82, 183, 136, 0.10),
+      0 0 14px 6px rgba(82, 183, 136, 0.18),
+      0 0 28px 10px rgba(82, 183, 136, 0.08);
+  }
+
+  /* Dot ikut membesar saat hover */
+  #cursor-dot.hovering {
+    width: 8px; height: 8px;
+    background: rgba(45, 106, 79, 1);
+    box-shadow: 0 0 6px 3px rgba(82, 183, 136, 0.45);
+  }
+
+  /* ── CLICK: ring menyusut tajam ─────────────────────────────── */
+  #cursor-ring.clicking {
+    width: 22px; height: 22px;
+    border-color: rgba(45, 106, 79, 1);
+    background: rgba(45, 106, 79, 0.12);
+    box-shadow:
+      0 0 0  2px rgba(45, 106, 79, 0.15),
+      0 0 8px 4px rgba(45, 106, 79, 0.20);
+    transition-duration: 0.07s;
+  }
+
+  /* ── ON COVER: warna hijau muda ─────────────────────────────── */
+  /* ── ON DARK SECTIONS (cover & penutup): warna putih ───────── */
+  #cursor-ring.on-dark {
+    border-color: rgba(255, 255, 255, 0.80);
+    width: 46px; height: 46px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow:
+      0 0 10px 4px rgba(255, 255, 255, 0.12),
+      0 0 22px 8px rgba(255, 255, 255, 0.06);
+    transition:
+      width       0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      height      0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.22s ease,
+      background  0.22s ease,
+      box-shadow  0.25s ease;
+  }
+
+  #cursor-dot.on-dark {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.35);
+  }
+
+  /* ON DARK + HOVERING: glow putih lebih terang */
+  #cursor-ring.on-dark.hovering {
+    width: 62px; height: 62px;
+    border-color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 0 0   4px rgba(255, 255, 255, 0.10),
+      0 0 16px 7px rgba(255, 255, 255, 0.20),
+      0 0 32px 14px rgba(255, 255, 255, 0.08);
+  }
+
+  #cursor-dot.on-dark.hovering {
+    width: 8px; height: 8px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.50);
+  }
 }
 
 /* ── ANIMATIONS ──────────────────────────────────────────────── */
@@ -1087,35 +1200,46 @@ h4.label {
 }
 
 /* ─ Sekbid card ──────────────────────────────────────────── */
+/* Header: badge → emoji → judul → subtitle, satu per satu */
 .sekbid-card.revealed .sekbid-letter-badge {
-  animation: scalePop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s both;
+  animation: scalePop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s both;
 }
 .sekbid-card.revealed .sekbid-emoji {
-  animation: scalePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.18s both;
+  animation: scalePop 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) 0.18s both;
 }
 .sekbid-card.revealed .sekbid-head-text h4 {
-  animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both;
 }
 .sekbid-card.revealed .sekbid-head-text p {
-  animation: fadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.40s both;
+  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
 }
-.sekbid-card.revealed .sekbid-col:nth-child(1) {
-  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both;
-}
-.sekbid-card.revealed .sekbid-col:nth-child(2) {
-  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.60s both;
-}
-.sekbid-card.revealed .sekbid-col:nth-child(3) {
-  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.74s both;
-}
-.sekbid-card.revealed .sekbid-col h5 {
-  animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
-}
-.sekbid-card.revealed .sekbid-col ul li:nth-child(1) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.10s both; }
-.sekbid-card.revealed .sekbid-col ul li:nth-child(2) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.20s both; }
-.sekbid-card.revealed .sekbid-col ul li:nth-child(3) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both; }
-.sekbid-card.revealed .sekbid-col ul li:nth-child(4) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.40s both; }
-.sekbid-card.revealed .sekbid-col ul li:nth-child(5) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.50s both; }
+
+/* Kolom tidak lagi fade sebagai blok – biarkan transparan, yang animate adalah isinya */
+.sekbid-card.revealed .sekbid-col { opacity: 1; }
+
+/* Kolom 1: heading h5 lalu li satu per satu */
+.sekbid-card.revealed .sekbid-col:nth-child(1) h5          { animation: slideRight 0.6s cubic-bezier(0.22,1,0.36,1) 0.54s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(1) ul li:nth-child(1) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 0.66s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(1) ul li:nth-child(2) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 0.78s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(1) ul li:nth-child(3) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 0.90s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(1) ul li:nth-child(4) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 1.02s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(1) ul li:nth-child(5) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 1.14s both; }
+
+/* Kolom 2: mulai setelah kolom 1 selesai ~1.28s */
+.sekbid-card.revealed .sekbid-col:nth-child(2) h5          { animation: slideRight 0.6s cubic-bezier(0.22,1,0.36,1) 1.28s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(2) ul li:nth-child(1) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 1.40s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(2) ul li:nth-child(2) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 1.52s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(2) ul li:nth-child(3) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 1.64s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(2) ul li:nth-child(4) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 1.76s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(2) ul li:nth-child(5) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 1.88s both; }
+
+/* Kolom 3: mulai setelah kolom 2 selesai ~2.02s */
+.sekbid-card.revealed .sekbid-col:nth-child(3) h5          { animation: slideRight 0.6s cubic-bezier(0.22,1,0.36,1) 2.02s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(3) ul li:nth-child(1) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 2.14s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(3) ul li:nth-child(2) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 2.26s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(3) ul li:nth-child(3) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 2.38s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(3) ul li:nth-child(4) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 2.50s both; }
+.sekbid-card.revealed .sekbid-col:nth-child(3) ul li:nth-child(5) { animation: slideRight 0.55s cubic-bezier(0.22,1,0.36,1) 2.62s both; }
 
 /* ─ Timeline ─────────────────────────────────────────────── */
 .timeline.revealed .tl-item:nth-child(1) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
@@ -1708,7 +1832,6 @@ h4.label {
 
   <!-- COVER -->
   <div class="cover" id="cover">
-    <canvas id="particle-canvas"></canvas>
     <div class="cover-bg-img"></div>
     <div class="cover-inner">
       <div class="cover-logo">
@@ -3032,88 +3155,94 @@ document.querySelectorAll('.reveal, .reveal-group').forEach(el => {
   revealObs.observe(el);
 });
 
-// ── PARTICLE CANVAS ──────────────────────────────────────────
+// ── CUSTOM CURSOR ─────────────────────────────────────────────
 (function() {
-  const canvas = document.getElementById('particle-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+  // Hanya aktif di desktop (>900px)
+  if (window.innerWidth <= 900) return;
 
-  function resize() {
-    const cover = document.getElementById('cover');
-    canvas.width  = cover.offsetWidth;
-    canvas.height = cover.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
+  // Buat elemen cursor
+  const ring = document.createElement('div');
+  ring.id = 'cursor-ring';
+  const dot  = document.createElement('div');
+  dot.id  = 'cursor-dot';
+  document.body.appendChild(ring);
+  document.body.appendChild(dot);
 
-  const NUM = 72;
-  const particles = [];
+  let mouseX = -200, mouseY = -200;
+  let ringX  = -200, ringY  = -200;
+  // Ring mengikuti mouse dengan sedikit lag (lerp)
+  const LERP = 0.28;
 
-  function rand(min, max) { return Math.random() * (max - min) + min; }
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    // Dot langsung ikut
+    dot.style.left  = mouseX + 'px';
+    dot.style.top   = mouseY + 'px';
 
-  function createParticle() {
-    return {
-      x: rand(0, canvas.width),
-      y: rand(0, canvas.height),
-      r: rand(1, 3.5),
-      vx: rand(-0.18, 0.18),
-      vy: rand(-0.3, -0.08),
-      alpha: rand(0.15, 0.55),
-      life: rand(0.004, 0.009),
-      age: rand(0, 1),
-    };
-  }
+    // Deteksi apakah di atas section gelap (cover atau penutup)
+    const darkSections = [
+      document.getElementById('cover'),
+      document.getElementById('penutup'),
+    ].filter(Boolean);
+    const isOnDark = darkSections.some(el => {
+      const r = el.getBoundingClientRect();
+      return mouseY >= r.top && mouseY <= r.bottom &&
+             mouseX >= r.left && mouseX <= r.right;
+    });
+    ring.classList.toggle('on-dark', isOnDark);
+    dot.classList.toggle('on-dark', isOnDark);
+  });
 
-  for (let i = 0; i < NUM; i++) {
-    particles.push(createParticle());
-  }
-
-  function drawParticle(p) {
-    const fade = p.age < 0.15 ? p.age / 0.15 : p.age > 0.8 ? (1 - p.age) / 0.2 : 1;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    // Soft white-green glow
-    const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.5);
-    grd.addColorStop(0, `rgba(168,230,196,${p.alpha * fade})`);
-    grd.addColorStop(1, `rgba(168,230,196,0)`);
-    ctx.fillStyle = grd;
-    ctx.fill();
-  }
-
-  function tick() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.age += p.life;
-      if (p.age >= 1 || p.y < -10) {
-        particles[i] = createParticle();
-        particles[i].y = canvas.height + 4;
-        particles[i].age = 0;
-      }
-      drawParticle(p);
+  // Hover state: link, button, card
+  const hoverTargets = 'a, button, .nav-item, .card, .sekbid-card, .eval-card, .callout, #back-top, .sf-box, .bab-header';
+  document.addEventListener('mouseover', e => {
+    if (e.target.closest(hoverTargets)) {
+      ring.classList.add('hovering');
+      dot.classList.add('hovering');
     }
-    // Draw subtle connecting lines between nearby particles
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 80) {
-          const fade = (1 - dist/80) * 0.12;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(168,230,196,${fade})`;
-          ctx.lineWidth = 0.7;
-          ctx.stroke();
-        }
-      }
+  });
+  document.addEventListener('mouseout', e => {
+    if (e.target.closest(hoverTargets)) {
+      ring.classList.remove('hovering');
+      dot.classList.remove('hovering');
     }
-    requestAnimationFrame(tick);
+  });
+
+  // Click shrink
+  document.addEventListener('mousedown', () => ring.classList.add('clicking'));
+  document.addEventListener('mouseup',   () => ring.classList.remove('clicking'));
+
+  // Lerp animation loop untuk ring
+  function animate() {
+    ringX += (mouseX - ringX) * LERP;
+    ringY += (mouseY - ringY) * LERP;
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+    requestAnimationFrame(animate);
   }
-  tick();
+  animate();
+
+  // Sembunyikan cursor saat keluar jendela
+  document.addEventListener('mouseleave', () => {
+    ring.style.opacity = '0';
+    dot.style.opacity  = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    ring.style.opacity = '1';
+    dot.style.opacity  = '1';
+  });
+
+  // Re-check ukuran layar saat resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 900) {
+      ring.style.display = 'none';
+      dot.style.display  = 'none';
+    } else {
+      ring.style.display = '';
+      dot.style.display  = '';
+    }
+  });
 })();
 </script>
 </body>
