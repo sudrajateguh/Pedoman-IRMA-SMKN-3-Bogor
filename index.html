@@ -4,6 +4,32 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Pedoman Kepengurusan IRMA – SMKN 3 Bogor</title>
+
+<!-- ═══════════════════════════════════════════════════════
+     OPEN GRAPH — WhatsApp / sosmed preview thumbnail
+     TODO: Ganti YOUR-USERNAME dan YOUR-REPO dengan milikmu
+           contoh: https://sudrajat.github.io/irma-smkn3/
+     ═══════════════════════════════════════════════════════ -->
+<meta property="og:type"        content="website" />
+<meta property="og:site_name"   content="IRMA SMKN 3 Bogor" />
+<meta property="og:title"       content="Pedoman Kepengurusan IRMA – SMKN 3 Bogor" />
+<meta property="og:description" content="Panduan resmi struktur organisasi, pembagian tugas, koordinasi, kewenangan, evaluasi, dan prosedur program kerja IRMA SMKN 3 Bogor." />
+<meta property="og:image"       content="https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&h=630&fit=crop&q=85" />
+<meta property="og:image:width"  content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt"   content="Pedoman Kepengurusan IRMA SMKN 3 Bogor" />
+<meta property="og:url"         content="https://sudrajateguh.github.io/Pedoman-IRMA-SMKN-3-Bogor/" />
+<meta property="og:locale"      content="id_ID" />
+
+<!-- Twitter / WhatsApp fallback -->
+<meta name="twitter:card"        content="summary_large_image" />
+<meta name="twitter:title"       content="Pedoman Kepengurusan IRMA – SMKN 3 Bogor" />
+<meta name="twitter:description" content="Panduan resmi struktur organisasi, pembagian tugas, koordinasi, kewenangan, evaluasi, dan prosedur program kerja IRMA SMKN 3 Bogor." />
+<meta name="twitter:image"       content="https://images.unsplash.com/photo-1555993539-1732b0258235?w=1200&h=630&fit=crop&q=85" />
+
+<!-- SEO dasar -->
+<meta name="description" content="Panduan resmi struktur organisasi, pembagian tugas, koordinasi, kewenangan, evaluasi, dan prosedur program kerja IRMA SMKN 3 Bogor." />
+<meta name="author"      content="IRMA SMKN 3 Bogor" />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 :root {
@@ -907,6 +933,15 @@ h4.label {
   #progress-bar { left: 0; }
 }
 
+/* ── PARTICLE CANVAS OVERLAY ─────────────────────────────────── */
+#particle-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
 /* ── ANIMATIONS ──────────────────────────────────────────────── */
 
 /* Cover entrance */
@@ -927,20 +962,20 @@ h4.label {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.cover-logo  { animation: coverTag   1s   cubic-bezier(.16,1,.3,1) 0s   both; }
-.cover-tag   { animation: coverTag   1.1s cubic-bezier(.16,1,.3,1) .2s  both; }
-.cover h1    { animation: coverTitle 1.2s cubic-bezier(.16,1,.3,1) .5s  both; }
-.cover-sub   { animation: coverSub   1.1s cubic-bezier(.16,1,.3,1) .85s both; }
-.cover-chips { animation: coverChips 1.1s cubic-bezier(.16,1,.3,1) 1.1s both; }
+.cover-logo  { animation: coverTag   1.2s cubic-bezier(0.22, 1, 0.36, 1) 0s    both; }
+.cover-tag   { animation: coverTag   1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.3s  both; }
+.cover h1    { animation: coverTitle 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.65s both; }
+.cover-sub   { animation: coverSub   1.3s cubic-bezier(0.22, 1, 0.36, 1) 1.05s both; }
+.cover-chips { animation: coverChips 1.3s cubic-bezier(0.22, 1, 0.36, 1) 1.35s both; }
 
-/* Scroll-reveal base */
+/* Scroll-reveal base — soft, generous, breathable */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(44px);
   will-change: opacity, transform;
   transition:
-    opacity  1.5s cubic-bezier(.16,1,.3,1),
-    transform 1.5s cubic-bezier(.16,1,.3,1);
+    opacity  1.1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal.revealed {
   opacity: 1;
@@ -953,18 +988,283 @@ h4.label {
   transform: translateY(36px);
   will-change: opacity, transform;
   transition:
-    opacity  1.4s cubic-bezier(.16,1,.3,1),
-    transform 1.4s cubic-bezier(.16,1,.3,1);
+    opacity  1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.reveal-group.revealed > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:.06s; }
-.reveal-group.revealed > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:.16s; }
-.reveal-group.revealed > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:.26s; }
-.reveal-group.revealed > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:.36s; }
-.reveal-group.revealed > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:.46s; }
-.reveal-group.revealed > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay:.56s; }
-.reveal-group.revealed > *:nth-child(7) { opacity:1; transform:translateY(0); transition-delay:.66s; }
+.reveal-group.revealed > *:nth-child(1) { opacity:1; transform:translateY(0); transition-delay:.08s; }
+.reveal-group.revealed > *:nth-child(2) { opacity:1; transform:translateY(0); transition-delay:.20s; }
+.reveal-group.revealed > *:nth-child(3) { opacity:1; transform:translateY(0); transition-delay:.32s; }
+.reveal-group.revealed > *:nth-child(4) { opacity:1; transform:translateY(0); transition-delay:.44s; }
+.reveal-group.revealed > *:nth-child(5) { opacity:1; transform:translateY(0); transition-delay:.56s; }
+.reveal-group.revealed > *:nth-child(6) { opacity:1; transform:translateY(0); transition-delay:.68s; }
+.reveal-group.revealed > *:nth-child(7) { opacity:1; transform:translateY(0); transition-delay:.80s; }
 
 .bab { animation: none; }
+
+/* ══════════════════════════════════════════════════════════════
+   INNER BOX ANIMATIONS — slow, cinematic, organic
+══════════════════════════════════════════════════════════════ */
+
+/* Easing presets (used via animation shorthand below)
+   --ease-out-expo : cubic-bezier(0.16, 1, 0.3, 1)   — fast start, long glide
+   --ease-spring   : cubic-bezier(0.34, 1.56, 0.64, 1) — slight overshoot
+   --ease-silk     : cubic-bezier(0.22, 1, 0.36, 1)   — ultra-smooth landing
+*/
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUpFar {
+  from { opacity: 0; transform: translateY(38px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scalePop {
+  0%   { opacity: 0; transform: scale(0.72); }
+  70%  { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes lineGrow {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 0.6; }
+}
+@keyframes numberPop {
+  0%   { opacity: 0; transform: scale(0.4) rotate(-20deg); }
+  65%  { opacity: 1; transform: scale(1.1) rotate(4deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+/* ─ BAB header — cinematic entrance ──────────────────────── */
+.bab-header.revealed .bab-icon {
+  animation: scalePop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+}
+.bab-header.revealed .bab-label {
+  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+.bab-header.revealed h2 {
+  animation: fadeUpFar 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+/* ─ Card — layered reveal ────────────────────────────────── */
+.card.revealed > [style*="font-size:28px"],
+.card.revealed > [style*="font-size:24px"],
+.card.revealed > [style*="font-size:32px"] {
+  animation: scalePop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s both;
+}
+.card.revealed .card-title {
+  animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+}
+.card.revealed ul li:nth-child(1)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both; }
+.card.revealed ul li:nth-child(2)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both; }
+.card.revealed ul li:nth-child(3)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.56s both; }
+.card.revealed ul li:nth-child(4)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.66s both; }
+.card.revealed ul li:nth-child(5)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.76s both; }
+.card.revealed ul li:nth-child(6)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.86s both; }
+.card.revealed ul li:nth-child(7)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.96s both; }
+.card.revealed ul li:nth-child(8)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 1.06s both; }
+
+/* ─ Callout ──────────────────────────────────────────────── */
+.callout.revealed .callout-icon {
+  animation: scalePop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s both;
+}
+.callout.revealed .callout-body strong {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+.callout.revealed .callout-body {
+  animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both;
+}
+
+/* ─ Sekbid card ──────────────────────────────────────────── */
+.sekbid-card.revealed .sekbid-letter-badge {
+  animation: scalePop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.08s both;
+}
+.sekbid-card.revealed .sekbid-emoji {
+  animation: scalePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.18s both;
+}
+.sekbid-card.revealed .sekbid-head-text h4 {
+  animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+.sekbid-card.revealed .sekbid-head-text p {
+  animation: fadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.40s both;
+}
+.sekbid-card.revealed .sekbid-col:nth-child(1) {
+  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both;
+}
+.sekbid-card.revealed .sekbid-col:nth-child(2) {
+  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.60s both;
+}
+.sekbid-card.revealed .sekbid-col:nth-child(3) {
+  animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.74s both;
+}
+.sekbid-card.revealed .sekbid-col h5 {
+  animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+}
+.sekbid-card.revealed .sekbid-col ul li:nth-child(1) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.10s both; }
+.sekbid-card.revealed .sekbid-col ul li:nth-child(2) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.20s both; }
+.sekbid-card.revealed .sekbid-col ul li:nth-child(3) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both; }
+.sekbid-card.revealed .sekbid-col ul li:nth-child(4) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.40s both; }
+.sekbid-card.revealed .sekbid-col ul li:nth-child(5) { animation: slideRight 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.50s both; }
+
+/* ─ Timeline ─────────────────────────────────────────────── */
+.timeline.revealed .tl-item:nth-child(1) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
+.timeline.revealed .tl-item:nth-child(2) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both; }
+.timeline.revealed .tl-item:nth-child(3) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both; }
+.timeline.revealed .tl-item:nth-child(4) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.50s both; }
+.timeline.revealed .tl-item:nth-child(5) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.64s both; }
+.timeline.revealed .tl-item:nth-child(6) { animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.78s both; }
+.timeline.revealed .tl-dot {
+  animation: scalePop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s both;
+}
+.timeline.revealed .tl-title {
+  animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.14s both;
+}
+.timeline.revealed .tl-body {
+  animation: fadeIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+}
+
+/* ─ Principle block ──────────────────────────────────────── */
+.principle-block.revealed .p-title {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+.principle-block.revealed .p-item:nth-child(1) { animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
+.principle-block.revealed .p-item:nth-child(2) { animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both; }
+.principle-block.revealed .p-item:nth-child(3) { animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both; }
+.principle-block.revealed .p-item:nth-child(4) { animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both; }
+.principle-block.revealed .p-item:nth-child(5) { animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.66s both; }
+.principle-block.revealed .p-item:nth-child(6) { animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.78s both; }
+.principle-block.revealed .p-num {
+  animation: numberPop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.06s both;
+}
+
+/* ─ Eval card ────────────────────────────────────────────── */
+.eval-card.revealed .ec-icon {
+  animation: scalePop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.12s both;
+}
+.eval-card.revealed .ec-title {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both;
+}
+.eval-card.revealed .ec-desc {
+  animation: fadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both;
+}
+
+/* ─ Step flow ────────────────────────────────────────────── */
+.step-flow.revealed .sf-step:nth-child(1) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
+.step-flow.revealed .sf-step:nth-child(2) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.20s both; }
+.step-flow.revealed .sf-step:nth-child(3) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both; }
+.step-flow.revealed .sf-step:nth-child(4) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both; }
+.step-flow.revealed .sf-step:nth-child(5) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.56s both; }
+.step-flow.revealed .sf-step:nth-child(6) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.68s both; }
+
+/* ─ Flow vertical ────────────────────────────────────────── */
+.flow.revealed .flow-step:nth-child(1) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
+.flow.revealed .flow-step:nth-child(2) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.20s both; }
+.flow.revealed .flow-step:nth-child(3) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both; }
+.flow.revealed .flow-step:nth-child(4) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both; }
+.flow.revealed .flow-step:nth-child(5) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.56s both; }
+.flow.revealed .flow-arrow { animation: fadeIn 0.6s ease 0.18s both; }
+
+/* ─ Diagram wrap ─────────────────────────────────────────── */
+.diagram-wrap.revealed > div > div:nth-child(odd):not([style*="color:#bbb"]) {
+  animation: scaleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─ Table rows ───────────────────────────────────────────── */
+.table-wrap.revealed table thead tr { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
+.table-wrap.revealed table tbody tr:nth-child(1) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
+.table-wrap.revealed table tbody tr:nth-child(2) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both; }
+.table-wrap.revealed table tbody tr:nth-child(3) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both; }
+.table-wrap.revealed table tbody tr:nth-child(4) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both; }
+.table-wrap.revealed table tbody tr:nth-child(5) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.58s both; }
+.table-wrap.revealed table tbody tr:nth-child(6) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.68s both; }
+.table-wrap.revealed table tbody tr:nth-child(7) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.78s both; }
+.table-wrap.revealed table tbody tr:nth-child(8) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.88s both; }
+
+/* ─ Sub-section h3 ───────────────────────────────────────── */
+.sub-section.revealed h3 {
+  animation: slideRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+.sub-section.revealed h3::before {
+  animation: lineGrow 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0s both;
+  transform-origin: left center;
+}
+
+/* ─ Prose ────────────────────────────────────────────────── */
+.prose.revealed {
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both;
+}
+
+/* ─ Closing section ──────────────────────────────────────── */
+.closing.revealed h2 {
+  animation: fadeUpFar 1s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+.closing.revealed > p:nth-child(2) { animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.32s both; }
+.closing.revealed > p:nth-child(3) { animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.46s both; }
+.closing.revealed ul li:nth-child(1) { animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.56s both; }
+.closing.revealed ul li:nth-child(2) { animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.68s both; }
+.closing.revealed ul li:nth-child(3) { animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.80s both; }
+.closing.revealed ul li:nth-child(4) { animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.92s both; }
+.closing.revealed ul li:nth-child(5) { animation: slideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 1.04s both; }
+.closing.revealed .sig-box { animation: fadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 1.14s both; }
+
+/* ─ Step-flow-v ──────────────────────────────────────────── */
+.step-flow-v.revealed .sfv-item:nth-child(1) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.06s both; }
+.step-flow-v.revealed .sfv-item:nth-child(2) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
+.step-flow-v.revealed .sfv-item:nth-child(3) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.30s both; }
+.step-flow-v.revealed .sfv-item:nth-child(4) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both; }
+.step-flow-v.revealed .sfv-item:nth-child(5) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both; }
+.step-flow-v.revealed .sfv-item:nth-child(6) { animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.66s both; }
+
+/* ─ List items standalone ────────────────────────────────── */
+.list.revealed li:nth-child(1)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
+.list.revealed li:nth-child(2)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
+.list.revealed li:nth-child(3)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both; }
+.list.revealed li:nth-child(4)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both; }
+.list.revealed li:nth-child(5)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both; }
+.list.revealed li:nth-child(6)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.58s both; }
+.list.revealed li:nth-child(7)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.68s both; }
+.list.revealed li:nth-child(8)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.78s both; }
+.list.revealed li:nth-child(9)  { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.88s both; }
+.list.revealed li:nth-child(10) { animation: slideRight 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.98s both; }
+
+/* ─ Hover micro-interactions on interactive boxes ──────── */
+.card {
+  transition: transform 0.2s cubic-bezier(.34,1.2,.64,1), box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.10);
+}
+.sekbid-card {
+  transition: box-shadow 0.2s ease;
+}
+.sekbid-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+.eval-card {
+  transition: transform 0.2s cubic-bezier(.34,1.2,.64,1), box-shadow 0.2s ease;
+}
+.eval-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,.09);
+}
+.callout {
+  transition: transform 0.2s cubic-bezier(.34,1.2,.64,1);
+}
+.callout:hover {
+  transform: translateX(4px);
+}
 
 .tag-added {
   display: inline-flex;
@@ -1285,6 +1585,11 @@ h4.label {
   color: rgba(255,255,255,.75);
 }
 
+/* ── COVER LOGO: hidden on desktop, visible on mobile ─────────── */
+@media (min-width: 901px) {
+  .cover-logo { display: none !important; }
+}
+
 /* ── SEKBID LETTER BADGE ─────────────────────────────────────── */
 .sekbid-head {
   position: relative;
@@ -1403,6 +1708,7 @@ h4.label {
 
   <!-- COVER -->
   <div class="cover" id="cover">
+    <canvas id="particle-canvas"></canvas>
     <div class="cover-bg-img"></div>
     <div class="cover-inner">
       <div class="cover-logo">
@@ -2622,7 +2928,7 @@ const obs = new IntersectionObserver(entries => {
 sections.forEach(s => obs.observe(s));
 
 // ── SCROLL REVEAL ────────────────────────────────────────────
-// Add reveal class to all animatable elements
+// Box / container elements
 const revealSelectors = [
   '.bab-header',
   '.sub-section',
@@ -2639,27 +2945,69 @@ const revealSelectors = [
   '.table-wrap',
   '.divider',
   '.flow',
+  '.closing',
+];
+
+// Non-box inline/text elements that should animate individually
+const textRevealSelectors = [
   'h4.label',
   '.list',
-  '.closing',
+  '.list li',
+  '.tl-item',
+  '.tl-title',
+  '.tl-body',
+  '.p-item',
+  '.prose p',
+  '.closing p',
+  '.closing ul li',
+  '.card ul li',
+  '.sekbid-col ul li',
+  '.chip',
+  '.cover-tag',
+  '.cover-scroll',
+  '.sf-step',
+  '.flow-step',
+  '.fh-step',
+  '.sfv-item',
+  '.eval-card',
+  '.bab-label',
+  'table tr',
+  '.card-attention',
+  '.flow-h',
 ];
 
 // Tag cards inside grids as reveal-group for stagger
 document.querySelectorAll('.cards').forEach(grid => {
   grid.classList.add('reveal-group');
 });
-
 document.querySelectorAll('.eval-grid').forEach(grid => {
   grid.classList.add('reveal-group');
 });
+document.querySelectorAll('.principle-grid').forEach(grid => {
+  grid.classList.add('reveal-group');
+});
 
-// Tag individual non-grid elements as plain reveal
+// Tag container elements as plain reveal
 revealSelectors.forEach(sel => {
   document.querySelectorAll(sel).forEach(el => {
-    // Skip if already inside a reveal-group (cards grid handles its children)
-    if (!el.closest('.reveal-group')) {
+    if (!el.closest('.reveal-group') && !el.closest('.reveal')) {
       el.classList.add('reveal');
     }
+  });
+});
+
+// Tag non-box text elements as reveal (with slight delay variation)
+textRevealSelectors.forEach((sel, sIdx) => {
+  document.querySelectorAll(sel).forEach((el, i) => {
+    // Skip if parent already has reveal/reveal-group
+    if (el.closest('.reveal-group') || el.classList.contains('reveal')) return;
+    // Skip if child of a .reveal element that isn't a group
+    const parentReveal = el.closest('.reveal');
+    if (parentReveal && !parentReveal.classList.contains('reveal-group')) return;
+
+    el.classList.add('reveal');
+    // Stagger siblings of same type slightly
+    el.style.transitionDelay = (i * 0.04) + 's';
   });
 });
 
@@ -2668,17 +3016,105 @@ const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('revealed');
+      // Also cascade 'revealed' to direct children so inner CSS animations fire
+      entry.target.querySelectorAll(':scope > *').forEach(child => {
+        child.classList.add('revealed');
+      });
       revealObs.unobserve(entry.target);
     }
   });
 }, {
-  threshold: 0.12,
-  rootMargin: '0px 0px -120px 0px'
+  threshold: 0.08,
+  rootMargin: '0px 0px -60px 0px'
 });
 
 document.querySelectorAll('.reveal, .reveal-group').forEach(el => {
   revealObs.observe(el);
 });
+
+// ── PARTICLE CANVAS ──────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    const cover = document.getElementById('cover');
+    canvas.width  = cover.offsetWidth;
+    canvas.height = cover.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const NUM = 72;
+  const particles = [];
+
+  function rand(min, max) { return Math.random() * (max - min) + min; }
+
+  function createParticle() {
+    return {
+      x: rand(0, canvas.width),
+      y: rand(0, canvas.height),
+      r: rand(1, 3.5),
+      vx: rand(-0.18, 0.18),
+      vy: rand(-0.3, -0.08),
+      alpha: rand(0.15, 0.55),
+      life: rand(0.004, 0.009),
+      age: rand(0, 1),
+    };
+  }
+
+  for (let i = 0; i < NUM; i++) {
+    particles.push(createParticle());
+  }
+
+  function drawParticle(p) {
+    const fade = p.age < 0.15 ? p.age / 0.15 : p.age > 0.8 ? (1 - p.age) / 0.2 : 1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    // Soft white-green glow
+    const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.5);
+    grd.addColorStop(0, `rgba(168,230,196,${p.alpha * fade})`);
+    grd.addColorStop(1, `rgba(168,230,196,0)`);
+    ctx.fillStyle = grd;
+    ctx.fill();
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.age += p.life;
+      if (p.age >= 1 || p.y < -10) {
+        particles[i] = createParticle();
+        particles[i].y = canvas.height + 4;
+        particles[i].age = 0;
+      }
+      drawParticle(p);
+    }
+    // Draw subtle connecting lines between nearby particles
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 80) {
+          const fade = (1 - dist/80) * 0.12;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(168,230,196,${fade})`;
+          ctx.lineWidth = 0.7;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
 </script>
 </body>
 </html>
