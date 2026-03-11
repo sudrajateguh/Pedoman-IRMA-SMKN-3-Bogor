@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="theme-color" content="#1a5c3e"/>
+<meta name="theme-color" content="#1a5c3e" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#1a5c3e" media="(prefers-color-scheme: dark)"/>
 <title>Pedoman Kepengurusan IRMA – SMKN 3 Bogor</title>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -2630,6 +2631,7 @@ function initMainPage() {
       setTimeout(() => { transition.classList.add('flash-in'); }, 400);
       setTimeout(() => {
         lockScreen.style.display = 'none';
+      const wm = document.getElementById('lock-watermark'); if (wm) wm.style.display = 'none';
         appContent.style.display = 'block';
         void appContent.offsetWidth;
         appContent.classList.add('visible');
@@ -2663,6 +2665,8 @@ function initMainPage() {
   // Focus handled by shape display on load
 })();
 </script>
+
+<div id="lock-watermark" style="position:fixed;bottom:8px;left:50%;transform:translateX(-50%);font-size:8px;letter-spacing:.12em;color:rgba(0,0,0,.12);font-family:'Plus Jakarta Sans',sans-serif;z-index:99999;pointer-events:none;white-space:nowrap;">made by @sudrajateguh</div>
 </body>
 </html>
 
